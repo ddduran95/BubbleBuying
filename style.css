@@ -1,0 +1,302 @@
+body {
+  font: 14px Helvetica;
+  background-image: url("imgs/fondo.png");
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: century gothic;
+  color: white;
+
+  display: flex;
+  /* all blocks are placed in a row direction, but in mobile layout, each is
+  full-length across main direction, so they will wrap (see in column) */
+  flex-flow: row wrap;
+}
+
+header {
+    order: 1;
+    display: flex;
+    justify-content: space-between;
+	padding-right:5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 2px;
+}
+.logo{
+    min-width: 100px;
+    height: 36px;
+    background-image: url("imgs/logo.png");
+    background-size: 100% 100%;
+    margin-bottom: 20px;
+ }
+.bloque_header{
+    align-self: center;
+    display: flex;
+    align-items: center;
+
+}
+.btn_buscar{
+    align-self: center;
+    background-color: #BBBBBB;
+    border: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+.btn_buscar:hover{
+    background-color: #AAAAAA;
+}
+.buscar{
+    height: 16.57px;
+    align-self: center;
+    border: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+}
+.entrar{
+    background-color: #34C9F2;
+    border-radius: 10px;
+    border:solid 5px;
+    border-color: white;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+.entrar:hover{
+    background-color: #14A9D2;
+}
+
+.btn_menu{
+    color: white;
+    text-decoration: none;
+}
+.prioridad_1{
+    font-size: 20px;
+	color:black;
+}
+.prioridad_2{
+    font-size: 16px;
+}
+
+.cuadro_producto{
+	color:black;
+	/*border: 2px solid black;*/
+	max-width: 150px;
+	margin:15px;
+	border-radius:10px;
+    background-color: #F5F5F5;
+    box-shadow: 6px 6px 10px #999;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-y: hidden;
+}
+.imagen_producto{
+	size: 200px, 200px;
+}
+.precio{
+    text-align: center;
+    font-weight: bold;
+    color: #00babf;
+    font-size: 25px;
+    margin: 0px;
+}
+.titulo{
+    margin: 0px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.descripcion{
+    margin: 0px;
+    font-size: 12px;
+}
+.categorias{
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+
+}
+.categoria{
+    display: inline-block;
+    border: 1px solid #AAAADD;
+    border-radius: 5px;
+    margin: 0px;
+    padding: 3px;
+    margin: 4px;
+    margin-top: 0px;
+    background-color: #DDDDFF;
+}
+.cuadro_vendedor{
+    display: flex;
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
+    align-items: center;
+    margin: 3px;
+    padding: 4px;
+}
+.texto_vendedor{
+    vertical-align: middle;
+    font-size: 10px;
+}
+/* Style The Dropdown Button */
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #14A9D2;
+}
+ul{
+	margin:0px;
+	padding:0px;
+
+}
+li{
+	margin-left:20px;
+	padding-left:0px;
+	padding-right:0px;
+	padding-top:4px;
+	padding-bottom:4px;
+
+}
+#mainnavigation {
+  order: 2;
+  background-color: #34C9F2;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+#mainnavigation ul {
+	list-style: none;
+}
+#mainnavigation ul ul {
+	display: none;
+}
+#mainnavigation ul ul.visible {
+	display: block;
+}
+
+#maincontent {
+  order: 3;
+  display:flex;
+  justify-content: center;
+  flex-wrap:wrap;
+
+}
+
+#news {
+  order: 4;
+}
+
+header, footer {
+  background-color: #34C9F2;
+
+}
+
+footer {
+  order: 5;
+}
+
+/* mobile layout: single colum, all items occupy the entire row, so wrap */
+header, #news, #maincontent, #mainnavigation, footer {
+  flex-basis: 100%;
+
+}
+
+
+/* Small devices (tablets, 768px and up) */
+/* container width: 750 */
+@media (min-width: 768px) {
+ body {
+   width: 750px;
+ }
+ .logo{
+   width: 150px;
+   height: 54px;
+ }
+}
+
+/* Medium devices (desktops, 992px and up) */
+/* container width: 970 */
+@media (min-width: 992px) {
+ body {
+   width: 970px;
+ }
+
+ /* article and nav will share the same row */
+ #maincontent {
+   flex-basis: 70%;
+ }
+ #mainnavigation {
+   flex-basis: 30%;
+ }
+ .logo{
+   width: 200px;
+   height: 72px;
+ }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+/* container width: 1170px */
+@media (min-width: 1200px) {
+ body {
+   width: 1170px;
+ }
+ /* article, nav and aside will share the same row */
+ #maincontent {
+   flex-basis: 80%;
+ }
+ #mainnavigation {
+   flex-basis: 20%;
+ }
+ .logo{
+   width: 200px;
+   height: 72px;
+  }
+  .cuadro_producto {
+  }
+}
