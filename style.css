@@ -17,7 +17,7 @@ header {
     order: 1;
     display: flex;
     justify-content: space-between;
-	padding-right:5px;
+	  padding-right:5px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -151,28 +151,56 @@ header {
 }
 
 .ventana_chat{
-  /*margin-left: 250px;*/
-  margin-top: 50px;
-  margin-left: 250px;
-  background-color: #CCCCCC;
-  width: 630px;
+  margin-top: 20px;
+  width: 650px;
   height: 500px;
-  box-shadow: 22px -2px 10px 8px #999999;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.chat .lista{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+
 }
 .cabecera_chat{
   width: 650px;
   height: 80px;
   background-color: #FFFFFF;
   display: flex;
+  align-items: center;
 }
 .objeto_chat{
-  width: 50px;
-  height: 50px;
+  margin: 20px;
+  width: 240px;
+  height: 80px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.lista .select{
+  background-color: #DDDDDD  ;
 }
 .cuerpo_chat{
   width: 650px;
   height: 375px;
-  background-color: #000000;
+  background-color: #DDDDDD;
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: stretch;
+}
+.comentario{
+  margin:10px;
+  border: solid 2px black;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+}
+.comentario .rigth{
+  text-align: right;
+}
+.comentario .left{
+ text-align: left;
 }
 .texto_chat{
   width: 650px;
@@ -194,9 +222,20 @@ header {
 #datos_producto{
   margin-left: 10px;
 }
+
 .vendedor_chat{
-  color:red;
+  display: flex;
+  justify-content: center;
+
 }
+.vendedor_chat_texto{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color:black;
+  margin-left: 10px;
+}
+
 /* Style The Dropdown Button */
 .dropbtn {
     color: white;
@@ -275,10 +314,16 @@ li{
 
 #maincontent {
   order: 3;
+
+}
+.main{
   display:flex;
   justify-content: center;
   flex-wrap:wrap;
-
+}
+.chat{
+  display:flex;
+  justify-content: space-between;
 }
 
 #news {
