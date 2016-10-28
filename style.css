@@ -4,7 +4,8 @@ body {
   margin-top: 0px;
   margin-left: auto;
   margin-right: auto;
-  font-family: century gothic;
+  font-family: 'Maven Pro', sans-serif;
+
   color: white;
 
   display: flex;
@@ -22,6 +23,9 @@ header {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 2px;
+}
+#mainnavigation{
+  font-family: 'Josefin Sans', sans-serif;
 }
 .logo{
     min-width: 100px;
@@ -101,6 +105,26 @@ header {
     word-wrap: break-word;
     overflow-y: hidden;
 }
+.btn_producto{
+  text-decoration: none;
+  color: black;
+}
+
+.btn_categoria{
+  text-decoration: none;
+  color: black;
+}
+
+.btn_categoria:active{
+  color: black;
+
+}
+
+.btn_vendedor{
+  text-decoration: none;
+  color:black;
+}
+
 .imagen_producto{
 	size: 200px, 200px;
 }
@@ -137,6 +161,7 @@ header {
     background-color: #DDDDFF;
 }
 .cuadro_vendedor{
+    background-color: white;
     display: flex;
     border: 2px solid #CCCCCC;
     border-radius: 10px;
@@ -147,13 +172,12 @@ header {
 .texto_vendedor{
     vertical-align: middle;
     font-size: 10px;
-    box-shadow: 6px 6px 10px #999;
 }
 
 .ventana_chat{
   margin-top: 20px;
   width: 650px;
-  height: 500px;
+  height: 550px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .chat .lista{
@@ -168,8 +192,12 @@ header {
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
+  font-family: 'Antic', sans-serif;
 }
 .objeto_chat{
+  display:flex;
+  align-items: center;
+  vertical-align: middle;
   margin: 20px;
   width: 240px;
   height: 80px;
@@ -177,30 +205,38 @@ header {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+#datos_chat{
+  margin: 5px;
+  color:black;
+}
+
 .lista .select{
   background-color: #DDDDDD  ;
 }
 .cuerpo_chat{
   width: 650px;
-  height: 375px;
+  height: 425px;
   background-color: #DDDDDD;
   display: flex;
   flex-direction: column-reverse;
   align-content: stretch;
 }
 .comentario{
+  width: auto;
   margin:10px;
-  border: solid 2px black;
-  border-radius: 10px;
-  background-color: white;
+  border-radius: 20px;
   color: black;
   padding: 10px;
 }
-.comentario .rigth{
+.cuerpo_chat .rigth{
   text-align: right;
+  background-color:#34C9F2;
 }
-.comentario .left{
- text-align: left;
+.cuerpo_chat .left{
+   text-align: left;
+   background-color: white;
+   border: solid 2px #34C9F2;
 }
 .texto_chat{
   width: 650px;
