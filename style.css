@@ -241,36 +241,45 @@ header {
 }
 .caja_texto_chat{
   width: 650px;
-  height: 45px;
-  background-color: white;
-  border-top: solid 2px #34C9F2;
-  border-left: solid 2px #34C9F2;
+  height: 44px;
+  border-top: solid 2px #CCCCCC;
   display: flex;
+  align-items:center;
+  vertical-align: middle;
   overflow-y: hidden;
-  font-size: 20px;
+  font-size: 15px;
+  background-color:#EEEEEE;
+  justify-content: space-between;
+
 }
 .texto_chat{
   color:black;
   border: 0px;
+  border-radius: 5px;
   width: 600px;
-  height: 45px;
+  height: 30px;
   font-size: 20px;
   align-self: center;
   text-align: left;
   text-decoration:underline;
   word-wrap: break-word;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.enviar_texto{
+  display: flex;
 }
 .btn_enviar_texto{
-    display: flex;
     margin-top: 7px;
+    margin-right: 14px;
     align-self:center;
     color: #34C9F2;
     border: 0px;
-    padding: 5px;
     text-decoration: none;
+    font-size: 20px;
 }
 .btn_enviar_texto:hover{
-    background-color: #14A9D2;
+    font-size: 28px;
 }
 .producto_chat{
     vertical-align: middle;
