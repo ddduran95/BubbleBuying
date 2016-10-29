@@ -99,11 +99,11 @@ header {
 	max-width: 150px;
 	margin:15px;
 	border-radius:10px;
-    background-color: #F5F5F5;
-    box-shadow: 6px 6px 10px #999;
-    text-align: center;
-    word-wrap: break-word;
-    overflow-y: hidden;
+  background-color: #F5F5F5;
+  box-shadow: 6px 6px 10px #999;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-y: hidden;
 }
 .btn_producto{
   text-decoration: none;
@@ -229,19 +229,48 @@ header {
   color: black;
   padding: 10px;
 }
-.cuerpo_chat .rigth{
+.cuerpo_chat .right{
   text-align: right;
   background-color:#34C9F2;
+  border: solid 2px white;
 }
 .cuerpo_chat .left{
    text-align: left;
    background-color: white;
    border: solid 2px #34C9F2;
 }
-.texto_chat{
+.caja_texto_chat{
   width: 650px;
   height: 45px;
-  background-color: #777777;
+  background-color: white;
+  border-top: solid 2px #34C9F2;
+  border-left: solid 2px #34C9F2;
+  display: flex;
+  overflow-y: hidden;
+  font-size: 20px;
+}
+.texto_chat{
+  color:black;
+  border: 0px;
+  width: 600px;
+  height: 45px;
+  font-size: 20px;
+  align-self: center;
+  text-align: left;
+  text-decoration:underline;
+  word-wrap: break-word;
+}
+.btn_enviar_texto{
+    display: flex;
+    margin-top: 7px;
+    align-self:center;
+    color: #34C9F2;
+    border: 0px;
+    padding: 5px;
+    text-decoration: none;
+}
+.btn_enviar_texto:hover{
+    background-color: #14A9D2;
 }
 .producto_chat{
     vertical-align: middle;
@@ -262,6 +291,7 @@ header {
 .vendedor_chat{
   display: flex;
   justify-content: center;
+  margin-left: 80px;
 
 }
 .vendedor_chat_texto{
@@ -433,4 +463,5 @@ header, #news, #maincontent, #mainnavigation, footer {
   }
   .cuadro_producto {
   }
+
 }
