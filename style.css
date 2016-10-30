@@ -175,23 +175,24 @@ header {
 }
 
 .ventana_chat{
+  flex-basis: 100%;
   margin-top: 20px;
-  width: 650px;
   height: 550px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .chat .lista{
   display: flex;
+  flex-basis: 30%;
   flex-direction: column;
-  width: 250px;
+
 
 }
 .cabecera_chat{
-  width: 650px;
   height: 80px;
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
 }
 .objeto_chat{
@@ -199,7 +200,6 @@ header {
   align-items: center;
   vertical-align: middle;
   margin: 20px;
-  width: 240px;
   height: 80px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -215,15 +215,13 @@ header {
   background-color: #DDDDDD  ;
 }
 .cuerpo_chat{
-  width: 650px;
   height: 425px;
   background-color: #DDDDDD;
   display: flex;
-  flex-direction: column-reverse;
-  align-content: stretch;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .comentario{
-  width: auto;
   margin:10px;
   border-radius: 20px;
   color: black;
@@ -233,14 +231,15 @@ header {
   text-align: right;
   background-color:#34C9F2;
   border: solid 2px white;
+  align-self: flex-start;;
 }
 .cuerpo_chat .left{
    text-align: left;
    background-color: white;
    border: solid 2px #34C9F2;
+   align-self: flex-end;
 }
 .caja_texto_chat{
-  width: 650px;
   height: 44px;
   border-top: solid 2px #CCCCCC;
   display: flex;
@@ -256,12 +255,10 @@ header {
   color:black;
   border: 0px;
   border-radius: 5px;
-  width: 600px;
   height: 30px;
   font-size: 20px;
   align-self: center;
   text-align: left;
-  text-decoration:underline;
   word-wrap: break-word;
   vertical-align: middle;
   margin-left: 5px;
@@ -283,7 +280,6 @@ header {
 }
 .producto_chat{
     vertical-align: middle;
-    width: 340px;
     height: 80px;
     align-items: center;
     font-size: 24px;
@@ -300,7 +296,7 @@ header {
 .vendedor_chat{
   display: flex;
   justify-content: center;
-  margin-left: 80px;
+  margin-right: 10px;
 
 }
 .vendedor_chat_texto{
@@ -361,7 +357,6 @@ header {
 ul{
 	margin:0px;
 	padding:0px;
-
 }
 li{
 	margin-left:20px;
@@ -372,7 +367,7 @@ li{
 
 }
 #mainnavigation {
-  order: 2;
+  order: 3;
   background-color: #34C9F2;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -386,9 +381,8 @@ li{
 #mainnavigation ul ul.visible {
 	display: block;
 }
-
 #maincontent {
-  order: 3;
+  order: 2;
 
 }
 .main{
@@ -400,16 +394,10 @@ li{
   display:flex;
   justify-content: space-between;
 }
-
-#news {
-  order: 4;
-}
-
 header, footer {
   background-color: #34C9F2;
 
 }
-
 footer {
   order: 5;
 }
@@ -417,7 +405,6 @@ footer {
 /* mobile layout: single colum, all items occupy the entire row, so wrap */
 header, #news, #maincontent, #mainnavigation, footer {
   flex-basis: 100%;
-
 }
 
 
@@ -439,13 +426,15 @@ header, #news, #maincontent, #mainnavigation, footer {
  body {
    width: 970px;
  }
-
  /* article and nav will share the same row */
- #maincontent {
-   flex-basis: 70%;
+ #maincontent, #mainnavigation {
+   flex-basis: 100%;
  }
- #mainnavigation {
+ .lista{
    flex-basis: 30%;
+ }
+ .ventana_chat{
+    flex-basis: 70%;
  }
  .logo{
    width: 200px;
@@ -462,15 +451,14 @@ header, #news, #maincontent, #mainnavigation, footer {
  /* article, nav and aside will share the same row */
  #maincontent {
    flex-basis: 80%;
+   order: 3;
  }
  #mainnavigation {
    flex-basis: 20%;
+   order: 2;
  }
  .logo{
    width: 200px;
    height: 72px;
   }
-  .cuadro_producto {
-  }
-
 }
