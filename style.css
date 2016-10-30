@@ -5,9 +5,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   font-family: 'Maven Pro', sans-serif;
-
   color: white;
-
   display: flex;
   /* all blocks are placed in a row direction, but in mobile layout, each is
   full-length across main direction, so they will wrap (see in column) */
@@ -18,10 +16,8 @@ header {
     order: 1;
     display: flex;
     justify-content: space-between;
-	  padding-right:5px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+	padding-right:5px;
+    border-radius: 10px;
     padding: 2px;
 }
 #mainnavigation{
@@ -369,8 +365,7 @@ li{
 #mainnavigation {
   order: 3;
   background-color: #34C9F2;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius:10px;
 }
 #mainnavigation ul {
 	list-style: none;
@@ -456,9 +451,14 @@ header, #news, #maincontent, #mainnavigation, footer {
  #mainnavigation {
    flex-basis: 20%;
    order: 2;
+   border-top-right-radius: 0px;
+   border-top-left-radius: 0px;
  }
  .logo{
    width: 200px;
    height: 72px;
+  }
+  header{
+     border-bottom-left-radius: 0px;
   }
 }
