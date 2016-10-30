@@ -178,10 +178,8 @@ header {
 }
 .chat .lista{
   display: flex;
-  flex-basis: 30%;
+  flex-basis: 100%;
   flex-direction: column;
-
-
 }
 .cabecera_chat{
   height: 80px;
@@ -237,7 +235,7 @@ header {
 }
 .caja_texto_chat{
   height: 44px;
-  border-top: solid 2px #CCCCCC;
+  border-top: solid 2px #DDDDDD;
   display: flex;
   align-items:center;
   vertical-align: middle;
@@ -245,7 +243,12 @@ header {
   font-size: 15px;
   background-color:#EEEEEE;
   justify-content: space-between;
-
+}
+.input_chat{
+    width: 100%;
+}
+.input_chat input{
+    width: 100%
 }
 .texto_chat{
   color:black;
@@ -265,6 +268,7 @@ header {
 .btn_enviar_texto{
     margin-top: 7px;
     margin-right: 14px;
+    margin-left: 14px;
     align-self:center;
     color: #34C9F2;
     border: 0px;
@@ -425,7 +429,7 @@ header, #news, #maincontent, #mainnavigation, footer {
  #maincontent, #mainnavigation {
    flex-basis: 100%;
  }
- .lista{
+ .chat .lista{
    flex-basis: 30%;
  }
  .ventana_chat{
