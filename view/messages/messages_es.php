@@ -1,11 +1,11 @@
 <?php
   //file: /view/messages/messages_es.php
-  $i18n_messages = 
+  $i18n_messages =
   array(
     "Post" => "Artículo",
     "by %s" => "por %s",
     "Posts" => "Artículos",
-    "Title" => "Título",    
+    "Title" => "Título",
     "Contents" => "Contenido",
     "Author" => "Autor",
     "Actions" => "Acciones",
@@ -32,6 +32,7 @@
     "Spanish" => "Español",
     "English" => "Inglés",
     "Welcome to the Blog App!" => "¡Bienvenido a la App Blog!",
-    "are you sure?" => "¿Estás seguro?"
+    "are you sure?" => "¿Estás seguro?",
+    "search" => "buscar"
   )
 ?>

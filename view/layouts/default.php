@@ -8,53 +8,48 @@
 ?><!DOCTYPE html>
 <html>
   <head>
-    <title>Buying Bubble</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./iconos/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Maven+Pro" rel="stylesheet">
-    <script src="index.js"></script>
-
     <title><?= $view->getVariable("title", "no title") ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./iconos/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans|Maven+Pro">
+    <script src="index.js"></script>
     <?= $view->getFragment("css") ?>
     <?= $view->getFragment("javascript") ?>
   </head>
   <body>
     <!-- header -->
     <header>
-      <h1>Blog</h1>
-      <nav id="menu" style="background-color:grey">
-	<ul>
-	<li><a href="index.php?controller=posts&amp;action=index">Posts</a></li>
-
-	<?php if (isset($currentuser)): ?>
-	  <li><?= sprintf(i18n("Hello %s"), $currentuser) ?>
-	  <a 	href="index.php?controller=users&amp;action=logout">(Logout)</a>
-	  </li>
-
-	<?php else: ?>
-	  <li><a href="index.php?controller=users&amp;action=login"><?= i18n("Login") ?></a></li>
-	  <?php endif ?>
-	</ul>
-      </nav>
-    </header>
-
-    <main>
-      <div id="flash">
-	<?= $view->popFlash() ?>
+      <div class="logo"></div>
+      <div class = "bloque_header" >
+        <a class= "btn_buscar" href="#"><i class="fa fa-search"></i></a>
+        <input type="text" class = "buscar" placeholder= <?=i18n("search") ?>>
       </div>
+      <div class = "bloque_header" >
+          <!-- Boton si esta logeuado -->
+      	<?php
+        if (isset($currentuser)):
+      	// = sprintf(i18n("Hello %s"), $currentuser)
+        ?>
+      	  <a class = "entrar" href="index.php?controller=users&amp;action=logout"> Salir </a>
+          <!-- Boton si NO esta logeuado -->
+      	<?php else: ?>
+      	  <a class = "entrar" href="index.php?controller=users&amp;action=login"><?= i18n("Login") ?></a>
+      	  <?php endif ?>
 
+          <div class="dropdown">
+              <i class="fa fa-globe	 fa-2x dropbtn" aria-hidden="false"> </i>
+              <div class="dropdown-content">
+                 <a href="index.php?controller=language&amp;action=change&amp;lang=es"><?= i18n("Spanish") ?></a>
+                <a href="index.php?controller=language&amp;action=change&amp;lang=en"><?= i18n("English") ?></a>
+              </div>
+          </div>
+      </div>
+    </header>
+      <div id="flash">
+	  <?= $view->popFlash() ?>
+      </div>
       <?= $view->getFragment(ViewManager::DEFAULT_FRAGMENT) ?>
-    </main>
-
-    <footer>
-      <?php
-      include(__DIR__."/language_select_element.php");
-      ?>
-    </footer>
-
   </body>
 </html>

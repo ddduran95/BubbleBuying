@@ -72,7 +72,9 @@ header {
 .entrar:hover{
     background-color: #14A9D2;
 }
-
+a {
+    text-decoration: none;
+}
 .btn_menu{
     color: white;
     text-decoration: none;
