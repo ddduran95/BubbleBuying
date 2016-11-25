@@ -33,6 +33,10 @@
     "English" => "Inglés",
     "Welcome to the Blog App!" => "¡Bienvenido a la App Blog!",
     "are you sure?" => "¿Estás seguro?",
-    "search" => "buscar"
+    "search" => "buscar",
+    "Create product" => "Crear producto",
+    "Description" => "Descripción",
+    "Prize" => "Precio",
+
   )
 ?>
