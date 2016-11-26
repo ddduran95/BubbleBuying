@@ -15,6 +15,9 @@
     "Post \"%s\" successfully added." => "Artículo \"%s\" añadido.",
     "Post \"%s\" successfully updated." => "Artículo \"%s\" modificado.",
     "Post \"%s\" successfully deleted." => "Artículo \"%s\" eliminado.",
+    "Product \"%s\" successfully added." => "Producto \"%s\" añadido.",
+    "Product \"%s\" successfully updated." => "Producto \"%s\" modificado.",
+    "Product \"%s\" successfully deleted." => "Producto \"%s\" eliminado.",
     "Login" => "Entrar",
     "Username" => "Nombre de usuario",
     "Password" => "Contraseña",
@@ -36,7 +39,7 @@
     "search" => "buscar",
     "Create product" => "Crear producto",
     "Description" => "Descripción",
-    "Prize" => "Precio",
+    "Prize" => "Precio"
 
   )
 ?>
