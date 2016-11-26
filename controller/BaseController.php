@@ -13,7 +13,7 @@ require_once(__DIR__."/../model/User.php");
  * the controllers in the Blog App.
  * Basically, it provides some protected
  * attributes and view variables.
- * 
+ *
  * @author lipido <lipido@gmail.com>
  */
 class BaseController {
@@ -23,28 +23,30 @@ class BaseController {
    * @var ViewManager
    */
   protected $view;
-  
+
   /**
    * The current user instance
    * @var User
    */
   protected $currentUser;
-  
+
   public function __construct() {
-    
+
     $this->view = ViewManager::getInstance();
 
     // get the current user and put it to the view
-    if (session_status() == PHP_SESSION_NONE) {      
-	session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+	     session_start();
     }
-    
+
     if(isset($_SESSION["currentuser"])) {
-     
-      $this->currentUser = new User($_SESSION["currentuser"]);      
+
+      $this->currentUser = new User($_SESSION["currentuser"]);
       //add current user to the view, since some views require it
-      $this->view->setVariable("currentusername", 
+      
+      //AQUI DEBERIA DE IR CURRENTUSER->GETALIAS()
+      $this->view->setVariable("currentusername",
 				  $this->currentUser->getUsername());
-    }     
+    }
   }
 }
