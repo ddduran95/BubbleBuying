@@ -30,8 +30,8 @@ class UserMapper {
    * @return void
    */
   public function save($user) {
-    $stmt = $this->db->prepare("INSERT INTO USUARIO values (?,?)");
-    $stmt->execute(array($user->getUsername(), $user->getPasswd()));
+    $stmt = $this->db->prepare("INSERT INTO usuario values (?,?)");
+    $stmt->execute(array($user->getNombre(), $user->getPassword()));
   }
 
   /**
@@ -40,9 +40,9 @@ class UserMapper {
    * @param string $username the username to check
    * @return boolean true if the username exists, false otherwise
    */
-  public function usernameExists($username) {
-    $stmt = $this->db->prepare("SELECT count(ALIAS) FROM USUARIO where ALIAS=?");
-    $stmt->execute(array($username));
+  public function aliasExists($alias) {
+    $stmt = $this->db->prepare("SELECT count(ALIAS) FROM usuario where ALIAS=?");
+    $stmt->execute(array($alias));
 
     if ($stmt->fetchColumn() > 0) {
       return true;
@@ -56,9 +56,9 @@ class UserMapper {
    * @param string $passwd the password
    * @return boolean true the username/passwrod exists, false otherwise.
    */
-  public function isValidUser($username, $passwd) {
-    $stmt = $this->db->prepare("SELECT count(ALIAS) FROM USUARIO where ALIAS=? and PASSWORD=?");
-    $stmt->execute(array($username, $passwd));
+  public function isValidUser($alias, $password) {
+    $stmt = $this->db->prepare("SELECT count(ALIAS) FROM usuario where ALIAS=? and PASSWORD=?");
+    $stmt->execute(array($alias, $password));
 
     if ($stmt->fetchColumn() > 0) {
       return true;
