@@ -17,7 +17,7 @@
   	    <?= isset($errors["title"])?$errors["title"]:"" ?><br>
 
   	    <?= i18n("Description") ?>: <br>
-  	    <textarea name="content" rows="4" cols="50"><?=
+  	    <textarea name="description" rows="4" cols="50"><?=
   	    $product->getDescripcion() ?></textarea>
   	    <?= isset($errors["description"])?$errors["description"]:"" ?><br>
 
