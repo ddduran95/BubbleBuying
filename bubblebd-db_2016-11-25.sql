@@ -27,18 +27,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chat` (
-  `FECHA` datetime NOT NULL,
-  `MENSAJE` varchar(144) COLLATE utf8_spanish_ci NOT NULL,
-  `ID_PRODUCTO` int(11) NOT NULL,
-  `VENDEDOR` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `COMPRADOR` varchar(45) COLLATE utf8_spanish_ci NOT NULL
+  `fecha` datetime NOT NULL,
+  `mensaje` varchar(144) COLLATE utf8_spanish_ci NOT NULL,
+  `producto` int(11) NOT NULL,
+  `vendedor` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `comprador` varchar(45) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `chat`
 --
 
-INSERT INTO `chat` (`FECHA`, `MENSAJE`, `ID_PRODUCTO`, `VENDEDOR`, `COMPRADOR`) VALUES
+INSERT INTO `chat` (`fecha`, `mensaje`, `producto`, `vendedor`, `comprador`) VALUES
 ('2016-11-25 09:26:26', 'Hola me gusta tu taza jja saludos', 1, 'barajas', 'laserrraptor'),
 ('2016-11-25 08:43:42', 'Hola, quiero tu taza', 1, 'barajas', 'ddduran');
 
@@ -49,19 +49,19 @@ INSERT INTO `chat` (`FECHA`, `MENSAJE`, `ID_PRODUCTO`, `VENDEDOR`, `COMPRADOR`) 
 --
 
 CREATE TABLE `producto` (
-  `TITULO` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `DESCRIPCION` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `PRECIO` double NOT NULL,
-  `FOTO` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-`ID` int(11) NOT NULL,
-  `VENDEDOR` varchar(45) COLLATE utf8_spanish_ci NOT NULL
+  `titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `precio` double NOT NULL,
+  `foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+	`id` int(11) NOT NULL,
+  `vendedor` varchar(45) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `producto`
 --
 
-INSERT INTO `producto` (`TITULO`, `DESCRIPCION`, `PRECIO`, `FOTO`, `ID`, `VENDEDOR`) VALUES
+INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id`, `vendedor`) VALUES
 ('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'img/taza.jpg', 1, 'barajas'),
 ('Alfombra', 'Alfombra bonita', 20, 'img/alfombrabonita.jpg', 2, 'ddduran'),
 ('Ordenador', 'Ordenador bueno', 200, 'img/ordenadorbueno.jpg', 3, 'laserrraptor');
@@ -73,16 +73,16 @@ INSERT INTO `producto` (`TITULO`, `DESCRIPCION`, `PRECIO`, `FOTO`, `ID`, `VENDED
 --
 
 CREATE TABLE `usuario` (
-  `NOMBRE_COMPLETO` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `ALIAS` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `PASSWORD` varchar(128) COLLATE utf8_spanish_ci NOT NULL
+  `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `alias` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(128) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` (`NOMBRE_COMPLETO`, `ALIAS`, `PASSWORD`) VALUES
+INSERT INTO `usuario` (`nombre`, `alias`, `password`) VALUES
 ('Samuel Ramilo Conde', 'laserrraptor', 'root'),
 ('Ismael Vizcaya Somoza', 'barajas', 'root'),
 ('Daniel de Alonso Durán', 'ddduran', 'root');
@@ -95,19 +95,19 @@ INSERT INTO `usuario` (`NOMBRE_COMPLETO`, `ALIAS`, `PASSWORD`) VALUES
 -- Indexes for table `chat`
 --
 ALTER TABLE `chat`
- ADD PRIMARY KEY (`FECHA`,`ID_PRODUCTO`,`VENDEDOR`,`COMPRADOR`);
+ ADD PRIMARY KEY (`FECHA`,`id_producto`,`vendedor`,`comprador`);
 
 --
 -- Indexes for table `producto`
 --
 ALTER TABLE `producto`
- ADD PRIMARY KEY (`ID`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`ALIAS`);
+ ADD PRIMARY KEY (`alias`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -117,7 +117,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
