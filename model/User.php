@@ -16,7 +16,7 @@ class User {
    * The user name of the user
    * @var string
    */
-  private $nombre;
+  private $username;
   /**
    * The alias of the user
    * @var string
@@ -34,8 +34,8 @@ class User {
    * @param string $username The name of the user
    * @param string $passwd The password of the user
    */
-  public function __construct($nombre=NULL, $alias=NULL, $password=NULL) {
-    $this->nombre = $nombre;
+  public function __construct($username=NULL, $alias=NULL, $password=NULL) {
+    $this->username = $username;
     $this->alias = $alias;
     $this->password = $password;
   }
@@ -45,8 +45,8 @@ class User {
    *
    * @return string The username of this user
    */
-  public function getNombre() {
-    return $this->nombre;
+  public function getUsername() {
+    return $this->username;
   }
 
   /**
@@ -55,14 +55,14 @@ class User {
    * @param string $username The username of this user
    * @return void
    */
-  public function setNombre($nombre) {
-    $this->nombre = $nombre;
+  public function setUsername($username) {
+    $this->username = $username;
   }
 
   public function getAlias() {
     return $this->alias;
   }
-  
+
   public function setAlias($alias) {
     $this->alias = $alias;
   }
