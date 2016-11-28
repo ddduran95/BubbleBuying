@@ -19,6 +19,7 @@
     "Product \"%s\" successfully updated." => "Producto \"%s\" modificado.",
     "Product \"%s\" successfully deleted." => "Producto \"%s\" eliminado.",
     "Login" => "Entrar",
+    "Logout" => "Salir",
     "Username" => "Nombre de usuario",
     "Password" => "Contraseña",
     "Not user?" => "Nuevo aquí?",
