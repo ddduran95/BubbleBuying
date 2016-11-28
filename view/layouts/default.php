@@ -47,6 +47,27 @@
           </div>
       </div>
     </header>
+    <nav id="mainnavigation">
+        <ul>
+            <li> <a class="btn_menu prioridad_1" href="#"><i class="fa fa-user"></i> Mi Perfil</a></li>
+			<li> <a class="btn_menu prioridad_1" href="#"><i class="fa fa-archive"></i> Mis Productos</a></li>
+			<li> <a class="btn_menu prioridad_1" href="#"><i class="fa fa-arrow-up"></i> Subir Producto</a></li>
+			<li> <a class="btn_menu prioridad_1" href="#"><i class="fa fa-comments"></i> Mis Chats</a></li>
+			<li id="categoriasmenuitem"><a class= "btn_menu prioridad_1" href="#"><i class="fa fa-chevron-down"></i> Categorías</a>
+				<ul>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-laptop"></i> Tecnologia </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-book"></i> Libros </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-home"></i> Cosas de casa </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-gamepad"></i> Consolas </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-child"></i> Niños </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-plug "></i> Electrodomesticos </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-suitcase "></i> Ropa </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-car "></i> Motor </a></li>
+					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-futbol-o "></i> Deporte </a></li>
+				</ul>
+			</li>
+		</ul>
+    </nav>
       <div id="flash">
 	  <?= $view->popFlash() ?>
       </div>
