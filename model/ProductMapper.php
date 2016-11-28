@@ -43,8 +43,8 @@ class ProductMapper {
 
     foreach ($products_db as $product) {
       //Suponiendo que la clase para Usuario se acabe llamando User
-      $vendedor = new User($product["alias"]);
-      array_push($products, new Product($product["id"], $product["titulo"], $product["descripcion"], $vendedor,
+      $vendedor = new User($product["nombre"], $product["alias"], $product["password"]);
+      array_push($products, new Product($product["id_producto"], $product["titulo"], $product["descripcion"], $vendedor,
       $product["precio"], $product["foto"]));
     }
 
