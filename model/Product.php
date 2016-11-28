@@ -182,10 +182,10 @@ class Product {
       if ($this->vendedor == NULL ) {
 	       $errors["seller"] = "author is mandatory";
       }
-      if (strlen(trim($this->precio)) {
+      if (strlen(trim($this->precio))) {
 	       $errors["prize"] = "prize is mandatory";
       }
-      if (strlen(trim($this->foto)) {
+      if (strlen(trim($this->foto)) ){
 	       $errors["photo"] = "photo is mandatory";
       }
 

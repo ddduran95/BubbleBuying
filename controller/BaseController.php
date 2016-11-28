@@ -43,10 +43,10 @@ class BaseController {
 
       $this->currentUser = new User($_SESSION["currentuser"]);
       //add current user to the view, since some views require it
-      
+
       //AQUI DEBERIA DE IR CURRENTUSER->GETALIAS()
       $this->view->setVariable("currentusername",
-				  $this->currentUser->getUsername());
+				  $this->currentUser->getAlias());
     }
   }
 }
