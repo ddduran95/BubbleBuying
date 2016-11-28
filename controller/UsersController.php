@@ -69,20 +69,19 @@ class UsersController extends BaseController {
       //process login form
       if ($this->userMapper->isValidUser($_POST["username"], $_POST["passwd"])) {
 
-	$_SESSION["currentuser"]=$_POST["username"];
+      	$_SESSION["currentuser"]=$_POST["username"];
+      	// send user to the restricted area (HTTP 302 code)
+      	$this->view->redirect("products", "index");
 
-	// send user to the restricted area (HTTP 302 code)
-	$this->view->redirect("products", "add");
-
-      }else{
-	$errors = array();
-	$errors["general"] = "Username is not valid";
-	$this->view->setVariable("errors", $errors);
+            }else{
+      	$errors = array();
+      	$errors["general"] = "Username is not valid";
+      	$this->view->setVariable("errors", $errors);
+          }
+        }
+        // render the view (/view/users/login.php)
+        $this->view->render("users", "login");
       }
-    }
-    // render the view (/view/users/login.php)
-    $this->view->render("users", "login");
-  }
 
  /**
    * Action to register
@@ -182,7 +181,7 @@ class UsersController extends BaseController {
     // perform a redirection. More or less:
     // header("Location: index.php?controller=users&action=login")
     // die();
-    $this->view->redirect("users", "login");
+    $this->view->redirect("products", "index");
 
   }
 
