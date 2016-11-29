@@ -9,17 +9,10 @@
 
  $view->setVariable("title", "Products");
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
   <!-- head-->
-  <head>
-    <title>Buying Bubble</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./iconos/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Maven+Pro" rel="stylesheet">
-	<script src="index.js"></script>
-  </head>
+
   <body>
 
     <article id = "maincontent">
