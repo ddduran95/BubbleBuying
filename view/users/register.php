@@ -9,9 +9,13 @@
 ?>
 <h1><?= i18n("Register")?></h1>
 <form action="index.php?controller=users&amp;action=register" method="POST">
-      <?= i18n("Username")?>: <input type="text" name="username"
+      <?= i18n("Name")?>: <input type="text" name="name"
+			value="<?= $user->getName() ?>">
+      <?= isset($errors["name"])?$errors["name"]:"" ?><br>
+
+      <?= i18n("Alias")?>: <input type="text" name="alias"
 			value="<?= $user->getAlias() ?>">
-      <?= isset($errors["username"])?$errors["username"]:"" ?><br>
+      <?= isset($errors["alias"])?$errors["alias"]:"" ?><br>
 
       <?= i18n("Password")?>: <input type="password" name="passwd"
 			value="">

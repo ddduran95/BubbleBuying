@@ -31,7 +31,7 @@ class UserMapper {
    */
   public function save($user) {
     $stmt = $this->db->prepare("INSERT INTO usuario values (?,?,?)");
-    $stmt->execute(array($user->getNombre(), $user->getAlias(), $user->getPassword()));
+    $stmt->execute(array($user->getName(), $user->getAlias(), $user->getPassword()));
   }
 
   /**
@@ -43,7 +43,6 @@ class UserMapper {
   public function aliasExists($alias) {
     $stmt = $this->db->prepare("SELECT count(alias) FROM usuario where alias=?");
     $stmt->execute(array($alias));
-
     if ($stmt->fetchColumn() > 0) {
       return true;
     }

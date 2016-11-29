@@ -16,7 +16,7 @@ class User {
    * The user name of the user
    * @var string
    */
-  private $username;
+  private $name;
   /**
    * The alias of the user
    * @var string
@@ -31,32 +31,32 @@ class User {
   /**
    * The constructor
    *
-   * @param string $username The name of the user
+   * @param string $name The name of the user
    * @param string $passwd The password of the user
    */
-  public function __construct($username=NULL, $alias=NULL, $password=NULL) {
-    $this->username = $username;
+  public function __construct($name=NULL, $alias=NULL, $password=NULL) {
+    $this->name = $name;
     $this->alias = $alias;
     $this->password = $password;
   }
 
   /**
-   * Gets the username of this user
+   * Gets the name of this user
    *
-   * @return string The username of this user
+   * @return string The name of this user
    */
-  public function getUsername() {
-    return $this->username;
+  public function getName() {
+    return $this->name;
   }
 
   /**
-   * Sets the username of this user
+   * Sets the name of this user
    *
-   * @param string $username The username of this user
+   * @param string $name The name of this user
    * @return void
    */
-  public function setUsername($username) {
-    $this->username = $username;
+  public function setName($name) {
+    $this->name = $name;
   }
 
   public function getAlias() {
@@ -96,19 +96,19 @@ class User {
    */
   public function checkIsValidForRegister() {
       $errors = array();
-      if (strlen($this->nombre) < 5) {
-	       $errors["username"] = "Username must be at least 5 characters length";
+      if (strlen($this->name) < 5) {
+	       $errors["name"] = "name must be at least 5 characters length";
 
       }
-      //3 por ejemplo
       if (strlen($this->alias) < 3) {
 	       $errors["alias"] = "Alias must be at least 3 characters length";
       }
-      if (strlen($this->password) < 5) {
+      if (strlen($this->password) < 4) {
 	       $errors["password"] = "Password must be at least 5 characters length";
       }
       if (sizeof($errors)>0){
 	       throw new ValidationException($errors, "user is not valid");
       }
+
   }
 }

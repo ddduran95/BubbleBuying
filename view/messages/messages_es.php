@@ -21,6 +21,8 @@
     "Login" => "Entrar",
     "Logout" => "Salir",
     "Username" => "Nombre de usuario",
+    "Name" => "Nombre completo",
+    "Alias" => "Alias",
     "Password" => "Contraseña",
     "Not user?" => "Nuevo aquí?",
     "Register here!" => "¡Regístrate aquí!",

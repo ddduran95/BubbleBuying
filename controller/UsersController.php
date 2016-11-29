@@ -114,37 +114,37 @@ class UsersController extends BaseController {
 
     $user = new User();
 
-    if (isset($_POST["username"])){ // reaching via HTTP Post...
-
+    if (isset($_POST["name"])){ // reaching via HTTP Post...
       // populate the User object with data form the form
-      $user->setUsername($_POST["username"]);
+      $user->setName($_POST["name"]);
+      $user->setAlias($_POST["alias"]);
       $user->setPassword($_POST["passwd"]);
 
       try{
-	$user->checkIsValidForRegister(); // if it fails, ValidationException
 
-	// check if user exists in the database
-	if (!$this->userMapper->usernameExists($_POST["username"])){
+        	$user->checkIsValidForRegister(); // if it fails, ValidationException
 
-	  // save the User object into the database
-	  $this->userMapper->save($user);
+        	// check if user exists in the database
+        	if (!$this->userMapper->aliasExists($_POST["alias"])){
+        	  // save the User object into the database
+        	  $this->userMapper->save($user);
 
-	  // POST-REDIRECT-GET
-	  // Everything OK, we will redirect the user to the list of posts
-	  // We want to see a message after redirection, so we establish
-	  // a "flash" message (which is simply a Session variable) to be
-	  // get in the view after redirection.
-	  $this->view->setFlash("Username ".$user->getUsername()." successfully added. Please login now");
+        	  // POST-REDIRECT-GET
+        	  // Everything OK, we will redirect the user to the list of posts
+        	  // We want to see a message after redirection, so we establish
+        	  // a "flash" message (which is simply a Session variable) to be
+        	  // get in the view after redirection.
+        	  $this->view->setFlash("Alias ".$user->getAlias()." successfully added. Please login now");
 
-	  // perform the redirection. More or less:
-	  // header("Location: index.php?controller=users&action=login")
-	  // die();
-	  $this->view->redirect("users", "login");
-	} else {
-	  $errors = array();
-	  $errors["username"] = "Username already exists";
-	  $this->view->setVariable("errors", $errors);
-	}
+        	  // perform the redirection. More or less:
+        	  // header("Location: index.php?controller=users&action=login")
+        	  // die();
+        	  $this->view->redirect("users", "login");
+        	} else {
+        	  $errors = array();
+        	  $errors["Alias"] = "Alias already exists";
+        	  $this->view->setVariable("errors", $errors);
+        	}
       }catch(ValidationException $ex) {
 	// Get the errors array inside the exepction...
 	$errors = $ex->getErrors();
