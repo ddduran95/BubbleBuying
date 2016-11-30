@@ -157,7 +157,7 @@ class Product {
     return $this->prize;
   }
 
-  public function setPrecio($prize) {
+  public function setPrize($prize) {
     $this->prize = $prize;
   }
 
@@ -182,10 +182,10 @@ class Product {
       if ($this->seller == NULL ) {
 	       $errors["seller"] = "seller is mandatory";
       }
-      if (strlen(trim($this->prize))) {
+      if (strlen(trim($this->prize)) == 0) {
 	       $errors["prize"] = "prize is mandatory";
       }
-      if (strlen(trim($this->photo)) ){
+      if (strlen(trim($this->photo)) == 0 ){
 	       $errors["photo"] = "photo is mandatory";
       }
 
