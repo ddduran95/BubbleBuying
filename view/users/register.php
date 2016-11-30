@@ -11,7 +11,8 @@
   <div class = "main">
     <div class="login">
       <h1><?= i18n("Sing up!")?></h1>
-      <form action="index.php?controller=users&amp;action=register" method="POST" class="formulario">
+      <form enctype = "multipart/form-data" action="index.php?controller=users&amp;action=register" method="POST" class="formulario">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" class="input" />
             <?= i18n("Name")?>: <input type="text" name="name"
       			value="<?= $user->getName() ?>" >
             <?= isset($errors["name"])?$errors["name"]:"" ?>

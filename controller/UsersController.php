@@ -126,11 +126,6 @@ class UsersController extends BaseController {
           throw new Exception("Image is too big to be uploaded");
       }
       // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
-      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-      && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG"
-      && $imageFileType != "GIF" ) {
-          throw new Exception("Format of this image is not allowed");
-      }
 
       move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
 
