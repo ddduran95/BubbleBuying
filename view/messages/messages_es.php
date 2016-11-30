@@ -45,7 +45,21 @@
     "search" => "buscar",
     "Create product" => "Crear producto",
     "Description" => "Descripción",
-    "Prize" => "Precio"
+    "Prize" => "Precio",
+    "My Profile"=> "Mi Perfil",
+    "My Products"=> "Mis Productos",
+    "New Product"=> "Nuevo Producto",
+    "My Chats"=> "Mis Chats",
+    "Categories"=> "Categorías",
+    "Tecnology"=> "Tecnología",
+    "Books"=> "Libros",
+    "Home"=> "Cosas de Casa",
+    "Game Consoles"=> "Consolas",
+    "Children"=> "Niños",
+    "Home Appliances "=> "Electrodomesticos",
+    "Clothing"=> "Ropa",
+    "Motor"=> "Motor",
+    "Sport"=> "Deportes",
 
   )
 ?>
