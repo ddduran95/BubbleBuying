@@ -59,7 +59,7 @@
     "Home Appliances "=> "Electrodomesticos",
     "Clothing"=> "Ropa",
     "Motor"=> "Motor",
-    "Sport"=> "Deportes",
+    "Sport"=> "Deportes"
 
   )
 ?>
