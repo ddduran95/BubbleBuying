@@ -27,17 +27,18 @@ class User {
    * @var string
    */
   private $password;
-
+  private $photo;
   /**
    * The constructor
    *
    * @param string $name The name of the user
    * @param string $passwd The password of the user
    */
-  public function __construct($name=NULL, $alias=NULL, $password=NULL) {
+  public function __construct($name=NULL, $alias=NULL, $password=NULL, $photo=NULL) {
     $this->name = $name;
     $this->alias = $alias;
     $this->password = $password;
+    $this->photo = $photo;
   }
 
   /**
@@ -83,6 +84,14 @@ class User {
    */
   public function setPassword($password) {
     $this->password = $password;
+  }
+
+  public function getPhoto() {
+    return $this->photo;
+  }
+
+  public function setPhoto($photo) {
+    $this->photo = $photo;
   }
 
   /**
