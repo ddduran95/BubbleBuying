@@ -19,10 +19,10 @@
 
         <a class="btn_producto" href="#">
             <div class="cuadro_producto">
-        			<img src="<?=$product->getFoto() ?>" height="150" width="150" style="border-top-left-radius:7px;border-top-right-radius:7px">
-        			<p class = "precio"> <?=$product->getPrecio() ?></p>
-        			<p class = "titulo"> <?=$product->getTitulo() ?></p>
-        			<p class = "descripcion"> <?=$product->getDescripcion() ?></p>
+        			<img src="<?=$product->getPhoto() ?>" height="150" width="150" style="border-top-left-radius:7px;border-top-right-radius:7px">
+        			<p class = "precio"> <?=$product->getPrize() ?></p>
+        			<p class = "titulo"> <?=$product->getTitle() ?></p>
+        			<p class = "descripcion"> <?=$product->getDescription() ?></p>
                 <a class="btn_categoria" href="#">
                   <div class="categorias">
         			         <div class = "categoria"><i class="fa fa-tag"></i> cosas de casa </div>
@@ -31,14 +31,14 @@
                 <a class="btn_vendedor" href="#">
                   <div class = "cuadro_vendedor">
                       <div class = "texto_vendedor">
-                        <?php if ($product->getVendedor()->getPhoto() == NULL){ ?>
+                        <?php if ($product->getSeller()->getPhoto() == NULL){ ?>
                           <img src = "imgs/perfil/predeterminado.jpg" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
                         <?php }else{ ?>
-                          <img src = "imgs/<?=$product->getVendedor()->getPhoto() ?>" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
+                          <img src = "imgs/<?=$product->getSeller()->getPhoto() ?>" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
                         <?php } ?>
                       </div>
                       <div class = "texto_vendedor">
-                        <strong> <?=$product->getVendedor()->getAlias() ?></strong>
+                        <strong> <?=$product->getSeller()->getAlias() ?></strong>
                         <div> 32 productos </div>
                       </div>
                   </div>
