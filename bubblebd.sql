@@ -62,9 +62,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`, `vendedor`) VALUES
-('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'imgs/producto/taza.jpg', 1, 'barajas'),
-('Moto', 'Corre a toda velocidad', 20, 'imgs/producto/moto.jpg', 2, 'ddduran'),
-('Iphone', 'Buen movil si no fuera porque es un Iphone', 600, 'imgs/producto/iphone.jpg', 3, 'laserrraptor');
+('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'taza.jpg', 1, 'barajas'),
+('Moto', 'Corre a toda velocidad', 20, 'moto.jpg', 2, 'ddduran'),
+('Iphone', 'Buen movil si no fuera porque es un Iphone.', 600, 'iphone.jpg', 3, 'laserraptor'),
+('Figura Sora', 'Figura de Sora, personaje principal de la saga kingdom hearts. Buen estado. Chulísima.', 600, 'figurasora.jpg', 4, 'laserraptor');
 
 -- --------------------------------------------------------
 
@@ -84,9 +85,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`nombre`, `alias`, `password`, `perfil`) VALUES
-('Samuel Ramilo Conde', 'laserraptor', 'root', 'perfil/luky.png'),
-('Ismael Vizcaya Somoza', 'barajas', 'root', 'perfil/vader.png'),
-('Daniel de Alonso Durán', 'ddduran', 'root', 'perfil/hansolo.png');
+('Samuel Ramilo Conde', 'laserraptor', 'root', 'luky.png'),
+('Ismael Vizcaya Somoza', 'barajas', 'root', 'vader.png'),
+('Daniel de Alonso Durán', 'ddduran', 'root', 'hansolo.png');
 
 --
 -- Indexes for dumped tables
