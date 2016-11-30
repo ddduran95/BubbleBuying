@@ -80,21 +80,16 @@ class ProductsController extends BaseController {
    *
    */
   public function view(){
-    if (!isset($_GET["id"])) {
-      throw new Exception("id is mandatory");
+
+    if (!isset($this->currentUser)) {
+      throw new Exception("Not in session. See your products requires login");
     }
-
-    $productid = $_GET["id"];
-
     // find the Product object in the database
-    $product = $this->productMapper->findById($productid);
+    $products = $this->productMapper->findBySeller($this->currentUser->getName());
 
-    if ($product == NULL) {
-      throw new Exception("no such product with id: ".$productid);
-    }
 
     // put the Product object to the view
-    $this->view->setVariable("product", $product);
+    $this->view->setVariable("products", $products);
 
     // check if comment is already on the view (for example as flash variable)
     // if not, put an empty Comment for the view
@@ -146,13 +141,35 @@ class ProductsController extends BaseController {
     if (isset($_POST["submit"])) { // reaching via HTTP Post...
 
       // populate the Post object with data form the form
-      $product->setTitulo($_POST["title"]);
-      $product->setDescripcion($_POST["description"]);
-      $product->setPrecio($_POST["prize"]);
-      $product->setFoto($_POST["photo"]);
+      $product->setTitle($_POST["title"]);
+      $product->setDescription($_POST["description"]);
+      $product->setPrize($_POST["prize"]);
+
+      //Upload image to server if everything's ok
+
+      $target_dir = 'imgs/producto/';
+      $target_file = $target_dir . basename($_FILES['photo']['name']);
+      $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+      $temp = explode (".", $_FILES['photo']['name']);
+      $nombreImagen = round (microtime(true)) . '.' . end($temp);
+      // Comprueba la longitud del archivo
+      if ($_FILES["photo"]["size"] > 1000000 ) {
+          throw new Exception("Image is too big to be uploaded");
+      }
+      // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG"
+      && $imageFileType != "GIF" ) {
+          throw new Exception("Format of this image is not allowed");
+      }
+
+      move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
+
+
+      $product->setPhoto($nombreImagen);
 
       // The user of the Post is the currentUser (user in session)
-      $product->setVendedor($this->currentUser);
+      $product->setSeller($this->currentUser);
 
       try {
       	// validate Post object
@@ -166,12 +183,12 @@ class ProductsController extends BaseController {
       	// We want to see a message after redirection, so we establish
       	// a "flash" message (which is simply a Session variable) to be
       	// get in the view after redirection.
-      	$this->view->setFlash(sprintf(i18n("Product \"%s\" successfully added."),$product ->getTitulo()));
+      	$this->view->setFlash(sprintf(i18n("Product \"%s\" successfully added."),$product ->getTitle()));
 
       	// perform the redirection. More or less:
       	// header("Location: index.php?controller=products&action=index")
       	// die();
-      	$this->view->redirect("products", "index");
+      	$this->view->redirect("products", "view");
 
       }catch(ValidationException $ex) {
       	// Get the errors array inside the exepction...
