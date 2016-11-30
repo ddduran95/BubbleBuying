@@ -62,9 +62,9 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`, `vendedor`) VALUES
-('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'img/taza.jpg', 1, 'barajas'),
-('Alfombra', 'Alfombra bonita', 20, 'img/alfombrabonita.jpg', 2, 'ddduran'),
-('Ordenador', 'Ordenador bueno', 200, 'img/ordenadorbueno.jpg', 3, 'laserrraptor');
+('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'imgs/producto/taza.jpg', 1, 'barajas'),
+('Moto', 'Corre a toda velocidad', 20, 'imgs/producto/moto.jpg', 2, 'ddduran'),
+('Iphone', 'Buen movil si no fuera porque es un Iphone', 600, 'imgs/producto/iphone.jpg', 3, 'laserrraptor');
 
 -- --------------------------------------------------------
 
@@ -75,17 +75,18 @@ INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`
 CREATE TABLE `usuario` (
   `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `alias` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(128) COLLATE utf8_spanish_ci NOT NULL
+  `password` varchar(128) COLLATE utf8_spanish_ci NOT NULL,
+  `perfil` varchar(128) COLLATE utf8_spanish_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` (`nombre`, `alias`, `password`) VALUES
-('Samuel Ramilo Conde', 'laserrraptor', 'root'),
-('Ismael Vizcaya Somoza', 'barajas', 'root'),
-('Daniel de Alonso Durán', 'ddduran', 'root');
+INSERT INTO `usuario` (`nombre`, `alias`, `password`, `perfil`) VALUES
+('Samuel Ramilo Conde', 'laserraptor', 'root', 'perfil/luky.png'),
+('Ismael Vizcaya Somoza', 'barajas', 'root', 'perfil/vader.png'),
+('Daniel de Alonso Durán', 'ddduran', 'root', 'perfil/hansolo.png');
 
 --
 -- Indexes for dumped tables
