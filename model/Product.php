@@ -23,31 +23,31 @@ class Product {
    * The title of this product
    * @var string
    */
-  private $titulo;
+  private $title;
 
   /**
    * The desxription of this product
    * @var string
    */
-  private $descripcion;
+  private $description;
 
   /**
    * The prize of this product
    * @var User
    */
-  private $precio;
+  private $prize;
 
   /**
    * The photo of this product
    * @var mixed
    */
-  private $foto;
+  private $photo;
 
   /**
    * The seller of this product
    * @var mixed
    */
-  private $vendedor;
+  private $seller;
 
   /**
    * The constructor
@@ -58,13 +58,13 @@ class Product {
    * @param User $author The author of the post
    * @param mixed $comments The list of comments
    */
-  public function __construct($id=NULL, $titulo=NULL, $descripcion=NULL, User $vendedor=NULL, $precio=NULL, $foto=NULL) {
+  public function __construct($id=NULL, $title=NULL, $description=NULL, User $seller=NULL, $prize=NULL, $photo=NULL) {
     $this->id = $id;
-    $this->titulo = $titulo;
-    $this->descripcion = $descripcion;
-    $this->vendedor = $vendedor;
-    $this->precio = $precio;
-    $this->foto = $foto;
+    $this->title = $title;
+    $this->description = $description;
+    $this->seller = $seller;
+    $this->prize = $prize;
+    $this->photo = $photo;
 
   }
 
@@ -82,8 +82,8 @@ class Product {
    *
    * @return string The title of this post
    */
-  public function getTitulo() {
-    return $this->titulo;
+  public function getTitle() {
+    return $this->title;
   }
 
   /**
@@ -92,8 +92,8 @@ class Product {
    * @param string $title the title of this post
    * @return void
    */
-  public function setTitulo($titulo) {
-    $this->titulo = $titulo;
+  public function setTitle($title) {
+    $this->title = $title;
   }
 
   /**
@@ -101,8 +101,8 @@ class Product {
    *
    * @return string The content of this post
    */
-  public function getDescripcion() {
-    return $this->descripcion;
+  public function getDescription() {
+    return $this->description;
   }
 
   /**
@@ -111,8 +111,8 @@ class Product {
    * @param string $content the content of this post
    * @return void
    */
-  public function setDescripcion($descripcion) {
-    $this->descripcion = $descripcion;
+  public function setDescription($description) {
+    $this->description = $description;
   }
 
   /**
@@ -120,8 +120,8 @@ class Product {
    *
    * @return User The author of this post
    */
-  public function getVendedor() {
-    return $this->vendedor;
+  public function getSeller() {
+    return $this->seller;
   }
 
   /**
@@ -130,8 +130,8 @@ class Product {
    * @param User $author the author of this post
    * @return void
    */
-  public function setVendedor(User $vendedor) {
-    $this->vendedor = $vendedor;
+  public function setSeller(User $seller) {
+    $this->seller = $seller;
   }
 
   /**
@@ -139,8 +139,8 @@ class Product {
    *
    * @return mixed The list of comments of this post
    */
-  public function getFoto() {
-    return $this->foto;
+  public function getPhoto() {
+    return $this->photo;
   }
 
   /**
@@ -149,16 +149,16 @@ class Product {
    * @param mixed $comments the comments list of this post
    * @return void
    */
-  public function setFoto($foto) {
-    $this->foto = $foto;
+  public function setPhoto($photo) {
+    $this->photo = $photo;
   }
 
-  public function getPrecio() {
-    return $this->precio;
+  public function getPrize() {
+    return $this->prize;
   }
 
-  public function setPrecio($precio) {
-    $this->precio = $precio;
+  public function setPrecio($prize) {
+    $this->prize = $prize;
   }
 
 
@@ -173,19 +173,19 @@ class Product {
    */
   public function checkIsValidForCreate() {
       $errors = array();
-      if (strlen(trim($this->titulo)) == 0 ) {
+      if (strlen(trim($this->title)) == 0 ) {
 	       $errors["title"] = "title is mandatory";
       }
-      if (strlen(trim($this->descripcion)) == 0 ) {
-	       $errors["description"] = "content is mandatory";
+      if (strlen(trim($this->description)) == 0 ) {
+	       $errors["description"] = "description is mandatory";
       }
-      if ($this->vendedor == NULL ) {
-	       $errors["seller"] = "author is mandatory";
+      if ($this->seller == NULL ) {
+	       $errors["seller"] = "seller is mandatory";
       }
-      if (strlen(trim($this->precio))) {
+      if (strlen(trim($this->prize))) {
 	       $errors["prize"] = "prize is mandatory";
       }
-      if (strlen(trim($this->foto)) ){
+      if (strlen(trim($this->photo)) ){
 	       $errors["photo"] = "photo is mandatory";
       }
 
