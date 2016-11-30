@@ -386,6 +386,54 @@ li{
   order: 2;
 
 }
+
+.login{
+  padding: 10px;
+  margin: 15px;
+  background-color: #F5F5F5;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  flex-basis: 40%;
+
+}
+
+.login h1{
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.login p{
+  text-align: center;  
+}
+
+.formulario{
+  font-size: 1.75em;
+  display:flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.formulario input{
+  font-size: 0.75em;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 2px solid #34C9F2;
+  margin-bottom: 10px;
+}
+
+.formulario .btn-registro{
+  margin: 10px;
+  padding: 10px;
+  flex-basis: 10%;
+  border-radius: 10px;
+  border: 5px solid white;
+  background-color: #24C9F2;
+  color: white;
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 1.05em;
+}
+
 .main{
   display:flex;
   justify-content: center;
