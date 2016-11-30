@@ -98,7 +98,7 @@ a {
 	margin:15px;
 	border-radius:10px;
   background-color: #F5F5F5;
-  box-shadow: 6px 6px 10px #999;
+  box-shadow: 6px 6px 10px #999, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   word-wrap: break-word;
   overflow-y: hidden;
@@ -387,6 +387,24 @@ li{
 
 }
 
+.add-product{
+  padding: 10px;
+  margin: 15px;
+  background-color: #F5F5F5;
+  color: black;
+  border-radius: 2px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.19);
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.add-product h1{
+    font-size: 2.5em;
+}
+
+
 .login{
   padding: 10px;
   margin: 15px;
@@ -404,7 +422,7 @@ li{
 }
 
 .login p{
-  text-align: center;  
+  text-align: center;
 }
 
 .formulario{
@@ -415,6 +433,15 @@ li{
 }
 
 .formulario input{
+  font-size: 0.75em;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 2px solid #34C9F2;
+  margin-bottom: 10px;
+
+}
+
+.formulario textarea{
   font-size: 0.75em;
   margin-top: 5px;
   border-radius: 5px;

@@ -24,7 +24,11 @@
       			value="">
             <?= isset($errors["passwd"])?$errors["passwd"]:"" ?>
 
+            <?= i18n("Photo") ?>: <input type="file" name="photo">
+      	    <?= isset($errors["photo"])?$errors["photo"]:"" ?>
+
             <input type="submit" value="<?= i18n("Register")?>" class=btn-registro>
+
       </form>
       <p><?= i18n("Already have an acount?")?> <a href="index.php?controller=users&amp;action=login"><?= i18n("Login here!")?></a></p>
     </div>

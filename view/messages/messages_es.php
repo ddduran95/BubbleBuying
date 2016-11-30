@@ -43,7 +43,7 @@
     "Welcome to the Blog App!" => "¡Bienvenido a la App Blog!",
     "are you sure?" => "¿Estás seguro?",
     "search" => "buscar",
-    "Create product" => "Crear producto",
+    "New Product" => "Nuevo Producto",
     "Description" => "Descripción",
     "Prize" => "Precio",
     "My Profile"=> "Mi Perfil",
@@ -59,7 +59,9 @@
     "Home Appliances "=> "Electrodomesticos",
     "Clothing"=> "Ropa",
     "Motor"=> "Motor",
-    "Sport"=> "Deportes"
+    "Sport"=> "Deportes",
+    "Photo"=> "Foto",
+    "Upload Product"=> "Subir Producto"
 
   )
 ?>
