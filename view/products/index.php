@@ -22,7 +22,7 @@
         			<img src="imgs/producto/<?=$product->getPhoto() ?>" height="150" width="150" style="border-top-left-radius:7px;border-top-right-radius:7px">
         			<p class = "precio"> <?=$product->getPrize() ?>€</p>
         			<p class = "titulo"> <?=$product->getTitle() ?></p>
-        			<p class = "descripcion"> <?=$product->getDescription() ?></p>
+        			<p class = "descripcion"> <?php echo substr($product->getDescription(),0,24); ?>...</p>
                 <a class="btn_categoria" href="#">
                   <div class="categorias">
         			         <div class = "categoria"><i class="fa fa-tag"></i> cosas de casa </div>
