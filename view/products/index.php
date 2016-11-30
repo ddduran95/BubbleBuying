@@ -11,8 +11,6 @@
 ?>
 
 <html lang="en">
-  <!-- head-->
-
   <body>
 
     <article id = "maincontent">
@@ -21,7 +19,7 @@
 
         <a class="btn_producto" href="#">
             <div class="cuadro_producto">
-        			<img src="imgs/taza.jpg" height="150" width="150" style="border-top-left-radius:7px;border-top-right-radius:7px">
+        			<img src="<?=$product->getFoto() ?>" height="150" width="150" style="border-top-left-radius:7px;border-top-right-radius:7px">
         			<p class = "precio"> <?=$product->getPrecio() ?></p>
         			<p class = "titulo"> <?=$product->getTitulo() ?></p>
         			<p class = "descripcion"> <?=$product->getDescripcion() ?></p>
@@ -33,7 +31,11 @@
                 <a class="btn_vendedor" href="#">
                   <div class = "cuadro_vendedor">
                       <div class = "texto_vendedor">
-                        <img src = "imgs/luky.png" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
+                        <?php if ($product->getVendedor()->getPhoto() == NULL){ ?>
+                          <img src = "imgs/perfil/predeterminado.jpg" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
+                        <?php }else{ ?>
+                          <img src = "imgs/<?=$product->getVendedor()->getPhoto() ?>" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
+                        <?php } ?>
                       </div>
                       <div class = "texto_vendedor">
                         <strong> <?=$product->getVendedor()->getAlias() ?></strong>
