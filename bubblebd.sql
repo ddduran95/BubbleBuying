@@ -75,18 +75,19 @@ CREATE TABLE `producto` (
   `precio` double NOT NULL,
   `foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `vendedor` varchar(45) COLLATE utf8_spanish_ci NOT NULL
+  `vendedor` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `categoria` ENUM('Tecnologia', 'Libros', 'Cosas de casa', 'Videojuegos', 'Niños', 'Electrodomesticos', 'Ropa', 'Motor', 'Deportes') NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`, `vendedor`) VALUES
-('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'taza.jpg', 1, 'barajas'),
-('Moto', 'Corre a toda velocidad', 20, 'moto.jpg', 2, 'ddduran'),
-('Iphone', 'Buen movil si no fuera porque es un Iphone.', 600, 'iphone.jpg', 3, 'laserraptor'),
-('Figura Sora', 'Figura de Sora, personaje principal de la saga kingdom hearts. Buen estado. Chulísima.', 600, 'figurasora.jpg', 4, 'laserraptor');
+INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`, `vendedor`, `categoria`) VALUES
+('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'taza.jpg', 1, 'barajas', 'Cosas de casa'),
+('Moto', 'Corre a toda velocidad', 20, 'moto.jpg', 2, 'ddduran', 'Motor'),
+('Iphone', 'Buen movil si no fuera porque es un Iphone.', 600, 'iphone.jpg', 3, 'laserraptor', 'Tecnologia'),
+('Figura Sora', 'Figura de Sora, personaje principal de la saga kingdom hearts. Buen estado. Chulísima.', 600, 'figurasora.jpg', 4, 'laserraptor', 'Videojuegos');
 
 -- --------------------------------------------------------
 
