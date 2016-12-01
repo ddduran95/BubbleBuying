@@ -506,6 +506,10 @@ li{
   flex-wrap: wrap;
 }
 
+.formulario .input-form{
+  font-size: 0.55em;
+}
+
 .main{
   display:flex;
   justify-content: center;
