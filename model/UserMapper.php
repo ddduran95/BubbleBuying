@@ -34,6 +34,38 @@ class UserMapper {
     $stmt->execute(array($user->getName(), $user->getAlias(), $user->getPassword(), $user->getPhoto()));
   }
 
+
+  /**
+   * Find a User in the database
+   *
+   * @param string $alias The user to be find
+   * @throws PDOException if a database error occurs
+   * @return void
+   */
+  public function findByAlias($alias) {
+    $stmt = $this->db->prepare("SELECT * FROM usuario where alias=?");
+    $stmt->execute(array($alias));
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if($user != null) {
+      return new User($user["nombre"], $user["alias"], $user["password"], $user["perfil"]);
+    } else {
+      return NULL;
+    }
+  }
+
+  /**
+   * Updates a User in the database
+   *
+   * @param Post $user The post to be updated
+   * @throws PDOException if a database error occurs
+   * @return void
+   */
+  public function update(User $user) {
+    $stmt = $this->db->prepare("UPDATE usuario set perfil=? where alias=?");
+    $stmt->execute(array($user->getPhoto(),$user->getAlias()));
+  }
+
   /**
    * Checks if a given username is already in the database
    *
