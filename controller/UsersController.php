@@ -172,6 +172,67 @@ class UsersController extends BaseController {
 
   }
 
+  public function view(){
+
+    if (!isset($this->currentUser)) {
+      throw new Exception("Not in session. See your profile requires login");
+    }
+
+      // find the current User in the database
+    $user = $this->userMapper->findByAlias($this->currentUser->getName());
+
+    if (isset($_POST["submit"])){ // reaching via HTTP Post...
+      // populate the User object with data form the form
+
+      $target_dir = 'imgs/perfil/';
+      $target_file = $target_dir . basename($_FILES['photo']['name']);
+      $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+      $temp = explode (".", $_FILES['photo']['name']);
+      $nombreImagen = round (microtime(true)) . '.' . end($temp);
+      // Comprueba la longitud del archivo
+      if ($_FILES["photo"]["size"] > 1000000 ) {
+          throw new Exception("Image is too big to be uploaded");
+      }
+      // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+
+      move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
+
+
+      $user->setPhoto($nombreImagen);
+      try{
+        	  // save the User object into the database
+        	  $this->userMapper->update($user);
+
+        	  // POST-REDIRECT-GET
+        	  // Everything OK, we will redirect the user to the list of posts
+        	  // We want to see a message after redirection, so we establish
+        	  // a "flash" message (which is simply a Session variable) to be
+        	  // get in the view after redirection.
+        	  $this->view->setFlash("Profile´s Photo  successfully Modify!");
+
+        	  // perform the redirection. More or less:
+        	  // header("Location: index.php?controller=users&action=login")
+        	  // die();
+        	  $this->view->redirect("users", "view");
+      }catch(ValidationException $ex) {
+      	// Get the errors array inside the exepction...
+      	$errors = $ex->getErrors();
+      	// And put it to the view as "errors" variable
+      	$this->view->setVariable("errors", $errors);
+      }
+    }
+
+
+
+
+    // put the user to the view
+    $this->view->setVariable("user", $user);
+
+    // render the view (/view/users/view.php)
+    $this->view->render("users", "view");
+
+  }
+
  /**
    * Action to logout
    *
