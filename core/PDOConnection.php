@@ -3,9 +3,9 @@
 
 class PDOConnection {
   private static $dbhost = "localhost";
-  private static $dbname = "BUBBLEBD";
+  private static $dbname = "bubblebd";
   private static $dbuser = "root";
-  private static $dbpass = "root";
+  private static $dbpass = "";
   private static $db_singleton = null;
 
   public static function getInstance() {
