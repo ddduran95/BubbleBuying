@@ -79,7 +79,7 @@ class ProductsController extends BaseController {
    * @return void
    *
    */
-  public function view(){
+  public function viewMyProducts(){
 
     if (!isset($this->currentUser)) {
       throw new Exception("Not in session. See your products requires login");
@@ -100,7 +100,7 @@ class ProductsController extends BaseController {
     */
 
     // render the view (/view/products/view.php)
-    $this->view->render("products", "view");
+    $this->view->render("products", "myproducts");
 
   }
 

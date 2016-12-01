@@ -52,7 +52,7 @@
     <nav id="mainnavigation">
         <ul>
           <li> <a class="btn_menu prioridad_1" href="index.php?controller=users&amp;action=view"><i class="fa fa-user"></i> <?= i18n("My Profile") ?></a></li>
-    			<li> <a class="btn_menu prioridad_1" href="index.php?controller=products&amp;action=view"><i class="fa fa-archive"></i> <?= i18n("My Products") ?></a></li>
+    			<li> <a class="btn_menu prioridad_1" href="index.php?controller=products&amp;action=viewMyProducts"><i class="fa fa-archive"></i> <?= i18n("My Products") ?></a></li>
     			<li> <a class="btn_menu prioridad_1" href="index.php?controller=products&amp;action=add"><i class="fa fa-arrow-up"></i> <?= i18n("New Product") ?></a></li>
     			<li> <a class="btn_menu prioridad_1" href="#"><i class="fa fa-comments"></i> <?= i18n("My Chats") ?></a></li>
     			<li id="categoriasmenuitem"><a class= "btn_menu prioridad_1" href="#"><i class="fa fa-chevron-down"></i> <?= i18n("Categories") ?></a>
