@@ -17,7 +17,7 @@
       <div class = "main">
       <?php foreach ($products as $product): ?>
 
-        <a class="btn_producto" href="#">
+        <a class="btn_producto" href="index.php?controller=products&amp;action=view&amp;id=<?= $product->getId() ?>">
             <div class="cuadro_producto">
         			<img class="img-product" src="imgs/producto/<?=$product->getPhoto() ?>">
         			<p class = "precio"> <?=$product->getPrize() ?>€</p>

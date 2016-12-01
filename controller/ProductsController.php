@@ -99,11 +99,39 @@ class ProductsController extends BaseController {
     $this->view->setVariable("comment", ($comment==NULL)?new Comment():$comment);
     */
 
-    // render the view (/view/products/view.php)
+    // render the view (/view/products/myproducts.php)
     $this->view->render("products", "myproducts");
 
   }
 
+  public function view(){
+
+    if (!isset($this->currentUser)) {
+      throw new Exception("Not in session. See your products requires login");
+    }
+    if (!isset($_GET["id"])) {
+			throw new Exception("id is mandatory");
+		}
+		$productid = $_GET["id"];
+    // find the Product object in the database
+    $product = $this->productMapper->findById($productid);
+
+
+    // put the Product object to the view
+    $this->view->setVariable("product", $product);
+
+    // check if comment is already on the view (for example as flash variable)
+    // if not, put an empty Comment for the view
+
+    /* ESTO SOBRA
+    $comment = $this->view->getVariable("comment");
+    $this->view->setVariable("comment", ($comment==NULL)?new Comment():$comment);
+    */
+
+    // render the view (/view/products/view.php)
+    $this->view->render("products", "view");
+
+  }
   /**
    * Action to add a new post
    *

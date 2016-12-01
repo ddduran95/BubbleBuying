@@ -61,13 +61,13 @@ class ProductMapper {
    * if the Post is not found
    */
   public function findById($productid){
-    $stmt = $this->db->prepare("SELECT * FROM producto WHERE id=?");
+    $stmt = $this->db->prepare("SELECT * FROM producto WHERE id_producto=?");
     $stmt->execute(array($productid));
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($product != null) {
       //Suponiendo que la clase para Usuario se acabe llamando User
-      return new Product($product["id"], $product["titulo"], $product["descripcion"], new User($product["vendedor"],
+      return new Product($product["id_producto"], $product["titulo"], $product["descripcion"], new User($product["vendedor"],
       $product["precio"], $product["foto"]));
     } else {
       return NULL;
@@ -110,7 +110,7 @@ class ProductMapper {
    * @return void
    */
   public function update(Product $product) {
-    $stmt = $this->db->prepare("UPDATE producto set titulo=?, descripcion=?, precio=?, foto=? where id=?");
+    $stmt = $this->db->prepare("UPDATE producto set titulo=?, descripcion=?, precio=?, foto=? where id_producto=?");
     $stmt->execute(array($product->getTitulo(), $product->getDescripcion(), $product->getPrecio(), $product->getFoto(),
     $product->getId()));
   }
@@ -123,7 +123,7 @@ class ProductMapper {
    * @return void
    */
   public function delete(Product $product) {
-    $stmt = $this->db->prepare("DELETE from product WHERE id=?");
+    $stmt = $this->db->prepare("DELETE from product WHERE id_producto=?");
     $stmt->execute(array($product->getId()));
   }
 
