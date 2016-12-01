@@ -16,18 +16,21 @@
         <form enctype = "multipart/form-data" action="index.php?controller=products&amp;action=add" method="POST" class="formulario">
           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" class="input" />
 
-    	    <?= i18n("Title") ?>: <input type="text" name="title" class="input-form">
-    	    <?= isset($errors["title"])?$errors["title"]:"" ?>
+    	    <?= i18n("Title") ?>: <?= isset($errors["title"])?$errors["title"]:"" ?>
+          <input type="text" name="title" class="input-form">
 
-    	    <?= i18n("Short Description") ?>: <br>
+
+    	    <?= i18n("Short Description") ?>: <?= isset($errors["description"])?$errors["description"]:"" ?>
     	    <textarea name="description" rows="2" cols="20"></textarea>
-    	    <?= isset($errors["description"])?$errors["description"]:"" ?>
 
-          <?= i18n("Prize") ?>: <input type="number" name="prize" class="input-form">
-    	    <?= isset($errors["prize"])?$errors["prize"]:"" ?>
 
-          <?= i18n("Photo") ?>: <input type="file" name="photo" class="input-form">
-    	    <?= isset($errors["photo"])?$errors["photo"]:"" ?>
+          <?= i18n("Prize") ?>: <?= isset($errors["prize"])?$errors["prize"]:"" ?>
+          <input type="number" name="prize" class="input-form">
+
+
+          <?= i18n("Photo") ?>: <?= isset($errors["photo"])?$errors["photo"]:"" ?>
+          <input type="file" name="photo" class="input-form">
+
 
     	    <input type="submit" name="submit" value="<?= i18n("Upload Product") ?>" class="btn-registro">
         </form>
