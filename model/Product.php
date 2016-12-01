@@ -174,19 +174,19 @@ class Product {
   public function checkIsValidForCreate() {
       $errors = array();
       if (strlen(trim($this->title)) == 0 ) {
-	       $errors["title"] = "title is mandatory";
+	       $errors["title"] = i18n("Title is mandatory.");
       }
       if (strlen(trim($this->description)) == 0 ) {
-	       $errors["description"] = "description is mandatory";
+	       $errors["description"] = i18n("Description is mandatory.");
       }
       if ($this->seller == NULL ) {
-	       $errors["seller"] = "seller is mandatory";
+	       $errors["seller"] = i18n("Seller is mandatory.");
       }
       if (strlen(trim($this->prize)) == 0) {
-	       $errors["prize"] = "prize is mandatory";
+	       $errors["prize"] = i18n("Prize is mandatory.");
       }
       if (strlen(trim($this->photo)) == 0 ){
-	       $errors["photo"] = "photo is mandatory";
+	       $errors["photo"] = i18n("Image is mandatory.");
       }
 
       if (sizeof($errors) > 0){
