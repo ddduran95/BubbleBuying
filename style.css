@@ -97,7 +97,7 @@ a {
 	max-width: 150px;
 	margin:15px;
 	border-radius:10px;
-  background-color: #F5F5F5;
+  background-color: #EDEDED;
   box-shadow: 6px 6px 10px #999, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   word-wrap: break-word;
@@ -121,6 +121,7 @@ a {
 .btn_vendedor{
   text-decoration: none;
   color:black;
+
 }
 
 .imagen_producto{
@@ -161,11 +162,12 @@ a {
 .cuadro_vendedor{
     background-color: white;
     display: flex;
-    border: 2px solid #CCCCCC;
+
     border-radius: 10px;
     align-items: center;
     margin: 3px;
     padding: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .texto_vendedor{
     vertical-align: middle;
