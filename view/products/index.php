@@ -32,9 +32,9 @@
                   <div class = "cuadro_vendedor">
                       <div class = "texto_vendedor">
                         <?php if ($product->getSeller()->getPhoto() == NULL){ ?>
-                          <img src = "imgs/perfil/predeterminado.jpg" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
+                          <img class="img-seller" src = "imgs/perfil/predeterminado.jpg" >
                         <?php }else{ ?>
-                          <img src = "imgs/perfil/<?=$product->getSeller()->getPhoto() ?>" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
+                          <img class="img-seller" src = "imgs/perfil/<?=$product->getSeller()->getPhoto() ?>">
                         <?php } ?>
                       </div>
                       <div class = "texto_vendedor">
