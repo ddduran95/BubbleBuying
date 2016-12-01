@@ -116,21 +116,22 @@ class UsersController extends BaseController {
       $user->setAlias($_POST["alias"]);
       $user->setPassword($_POST["passwd"]);
 
-      $target_dir = 'imgs/perfil/';
-      $target_file = $target_dir . basename($_FILES['photo']['name']);
-      $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-      $temp = explode (".", $_FILES['photo']['name']);
-      $nombreImagen = round (microtime(true)) . '.' . end($temp);
-      // Comprueba la longitud del archivo
-      if ($_FILES["photo"]["size"] > 1000000 ) {
-          throw new Exception("Image is too big to be uploaded");
+      if(!$_FILES['size']==0){
+        $target_dir = 'imgs/perfil/';
+        $target_file = $target_dir . basename($_FILES['photo']['name']);
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+        $temp = explode (".", $_FILES['photo']['name']);
+        $nombreImagen = round (microtime(true)) . '.' . end($temp);
+        // Comprueba la longitud del archivo
+        if ($_FILES["photo"]["size"] > 1000000 ) {
+            throw new Exception("Image is too big to be uploaded");
+        }
+        // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
+
+        $user->setPhoto($nombreImagen);
       }
-      // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
-
-      move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
-
-
-      $user->setPhoto($nombreImagen);
       try{
 
         	$user->checkIsValidForRegister(); // if it fails, ValidationException
@@ -183,7 +184,7 @@ class UsersController extends BaseController {
 
     if (isset($_POST["submit"])){ // reaching via HTTP Post...
       // populate the User object with data form the form
-
+      
       $target_dir = 'imgs/perfil/';
       $target_file = $target_dir . basename($_FILES['photo']['name']);
       $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);

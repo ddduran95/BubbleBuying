@@ -389,6 +389,13 @@ li{
 
 }
 
+.img-profile{
+  height:250px;
+  width:250px;
+  border-radius: 100%;
+  border: 1px solid white;
+}
+
 .add-product, .product-view{
   padding: 10px;
   margin: 15px;
@@ -413,10 +420,11 @@ li{
 
 .user-data{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-basis: 35%;
   font-size: 1.75em;
   align-items: center;
+  justify-content: space-around;
 
 }
 
@@ -493,7 +501,7 @@ li{
 
 .view-form{
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   justify-content: space-around;
   flex-wrap: wrap;
 }

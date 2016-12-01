@@ -17,9 +17,9 @@
         <div class="view-form">
           <div class=" user-photo">
             <?php if ($user->getPhoto() == NULL){ ?>
-              <img src = "imgs/perfil/predeterminado.jpg" height="200" width="200" >
+              <img class="img-profile" src = "imgs/perfil/predeterminado.jpg" height="200" width="200" >
             <?php }else{ ?>
-              <img src = "imgs/perfil/<?=$user->getPhoto() ?>" height="200" width="200" style="border-radius: 100%; border: 1px solid white">
+              <img class="img-profile" src = "imgs/perfil/<?=$user->getPhoto() ?>" >
             <?php } ?>
             <form enctype = "multipart/form-data" action="index.php?controller=users&amp;action=view" method="POST" class="formulario ">
               <input type="hidden" name="MAX_FILE_SIZE" value="1000000" class="input" />
@@ -29,13 +29,12 @@
             </form>
           </div>
           <div class="user-data">
-            <div class="user-alias">
-                <h2><?= $user->getAlias() ?></h2>
-            </div>
             <div >
                 <label><?= $user->getName() ?></label>
             </div>
-
+            <div class="user-alias">
+                <h2><?= $user->getAlias() ?></h2>
+            </div>
           </div>
         </div>
 
