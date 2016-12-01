@@ -67,7 +67,9 @@
     "Sport"=> "Deportes",
     "Photo"=> "Foto",
     "Upload Product"=> "Subir Producto",
-    "Short Description"=> "Descripción Breve"
+    "Short Description"=> "Descripción Breve",
+    "Upload a new profile photo"=> "Sube una nueva foto de perfil",
+    "Save Photo"=> "Guardar Foto"
 
   )
 ?>
