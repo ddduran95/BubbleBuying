@@ -12,15 +12,15 @@
 <article id = "maincontent">
   <div class = "main">
     <div class = "add-product">
-        <h1><?= i18n("New product")?></h1>
+        <h1><?= i18n("New Product")?></h1>
         <form enctype = "multipart/form-data" action="index.php?controller=products&amp;action=add" method="POST" class="formulario">
           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" class="input" />
 
     	    <?= i18n("Title") ?>: <input type="text" name="title" class="input-form">
     	    <?= isset($errors["title"])?$errors["title"]:"" ?>
 
-    	    <?= i18n("Description") ?>: <br>
-    	    <textarea name="description" rows="4" cols="50"></textarea>
+    	    <?= i18n("Short Description") ?>: <br>
+    	    <textarea name="description" rows="2" cols="20"></textarea>
     	    <?= isset($errors["description"])?$errors["description"]:"" ?>
 
           <?= i18n("Prize") ?>: <input type="number" name="prize" class="input-form">

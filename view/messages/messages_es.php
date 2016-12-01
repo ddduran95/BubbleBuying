@@ -61,7 +61,8 @@
     "Motor"=> "Motor",
     "Sport"=> "Deportes",
     "Photo"=> "Foto",
-    "Upload Product"=> "Subir Producto"
+    "Upload Product"=> "Subir Producto",
+    "Short Description"=> "Descripción Breve"
 
   )
 ?>
