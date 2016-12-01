@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.9
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 25, 2016 at 09:08 AM
--- Server version: 5.5.39
--- PHP Version: 5.4.33
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 01-12-2016 a las 11:22:19
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,38 +14,59 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bubblebd`
+-- Base de datos: `bubblebd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
+-- Estructura de tabla para la tabla `chat`
 --
 
 CREATE TABLE `chat` (
-  `fecha` datetime NOT NULL,
-  `mensaje` varchar(144) COLLATE utf8_spanish_ci NOT NULL,
-  `id_producto` int(11) NOT NULL,
+  `chat` int(11) NOT NULL,
+  `producto` int(11) NOT NULL,
   `vendedor` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `comprador` varchar(45) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `chat`
+-- Volcado de datos para la tabla `chat`
 --
 
-INSERT INTO `chat` (`fecha`, `mensaje`, `id_producto`, `vendedor`, `comprador`) VALUES
-('2016-11-25 09:26:26', 'Hola me gusta tu taza jja saludos', 1, 'barajas', 'laserrraptor'),
-('2016-11-25 08:43:42', 'Hola, quiero tu taza', 1, 'barajas', 'ddduran');
+INSERT INTO `chat` (`chat`, `producto`, `vendedor`, `comprador`) VALUES
+(1, 1, 'barajas', 'ddduran'),
+(2, 2, 'barajas', 'laserraptor');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `producto`
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE `mensajes` (
+  `chat` int(11) NOT NULL,
+  `tiempo` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `mensaje` varchar(150) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`chat`, `tiempo`, `mensaje`) VALUES
+(1, '2016-12-01 10:20:59', 'Mensaje 1 '),
+(1, '2016-12-01 10:21:18', 'Mensaje 3'),
+(2, '2016-12-01 10:20:59', 'Mensaje 2'),
+(2, '2016-12-01 10:21:18', 'Mensaje 4');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
 --
 
 CREATE TABLE `producto` (
@@ -53,12 +74,12 @@ CREATE TABLE `producto` (
   `descripcion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `precio` double NOT NULL,
   `foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-	`id_producto` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
   `vendedor` varchar(45) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `producto`
+-- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`, `vendedor`) VALUES
@@ -70,18 +91,18 @@ INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
   `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `alias` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(128) COLLATE utf8_spanish_ci NOT NULL,
-  `perfil` varchar(128) COLLATE utf8_spanish_ci
+  `perfil` varchar(128) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`nombre`, `alias`, `password`, `perfil`) VALUES
@@ -90,36 +111,42 @@ INSERT INTO `usuario` (`nombre`, `alias`, `password`, `perfil`) VALUES
 ('Daniel de Alonso Durán', 'ddduran', 'root', 'hansolo.png');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `chat`
+-- Indices de la tabla `chat`
 --
 ALTER TABLE `chat`
- ADD PRIMARY KEY (`fecha`,`id_producto`,`vendedor`,`comprador`);
+  ADD PRIMARY KEY (`chat`);
 
 --
--- Indexes for table `producto`
+-- Indices de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD PRIMARY KEY (`chat`,`tiempo`,`mensaje`);
+
+--
+-- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
- ADD PRIMARY KEY (`id_producto`);
+  ADD PRIMARY KEY (`id_producto`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`alias`);
+  ADD PRIMARY KEY (`alias`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `producto`
+-- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
