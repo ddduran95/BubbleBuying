@@ -15,13 +15,7 @@
         <h1><?= i18n("My Profile")?></h1>
 
         <div class="view-form">
-          <div class="user-data">
-              <label><?= i18n("Name") ?>:</label>
-              <p><?= $user->getName() ?></p>
-              <label><?= i18n("Alias") ?>:</label>
-              <p><?= $user->getAlias() ?></p>
-          </div>
-          <div class="user-data user-photo">
+          <div class=" user-photo">
             <?php if ($user->getPhoto() == NULL){ ?>
               <img src = "imgs/perfil/predeterminado.jpg" height="200" width="200" >
             <?php }else{ ?>
@@ -29,11 +23,18 @@
             <?php } ?>
             <form enctype = "multipart/form-data" action="index.php?controller=users&amp;action=view" method="POST" class="formulario ">
               <input type="hidden" name="MAX_FILE_SIZE" value="1000000" class="input" />
-
-                <?= i18n("Upload a new profile photo") ?>: <input type="file" name="photo" value="imgs/perfil/<?=$user->getPhoto() ?>" class="input-form">
+                <?= i18n("Upload a new profile photo") ?>: <input type="file" name="photo" value="imgs/perfil/<?=$user->getPhoto() ?>" class="input-form" required="true">
                 <?= isset($errors["photo"])?$errors["photo"]:"" ?>
         	    <input type="submit" name="submit" value="<?= i18n("Save Photo") ?>" class="btn-registro">
             </form>
+          </div>
+          <div class="user-data">
+            <div class="user-alias">
+                <h2><?= $user->getAlias() ?></h2>
+            </div>
+            <div >
+                <label><?= $user->getName() ?></label>
+            </div>
 
           </div>
         </div>
