@@ -49,6 +49,7 @@ INSERT INTO `chat` (`chat`, `producto`, `vendedor`, `comprador`) VALUES
 
 CREATE TABLE `mensajes` (
   `chat` int(11) NOT NULL,
+  `autor` varchar(45) COLLATE latin1_spanish_ci NOT NULL,
   `tiempo` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `mensaje` varchar(150) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -57,11 +58,11 @@ CREATE TABLE `mensajes` (
 -- Volcado de datos para la tabla `mensajes`
 --
 
-INSERT INTO `mensajes` (`chat`, `tiempo`, `mensaje`) VALUES
-(1, '2016-12-01 10:20:59', 'Mensaje 1 '),
-(1, '2016-12-01 10:21:18', 'Mensaje 3'),
-(2, '2016-12-01 10:20:59', 'Mensaje 2'),
-(2, '2016-12-01 10:21:18', 'Mensaje 4');
+INSERT INTO `mensajes` (`chat`, `autor`, `tiempo`, `mensaje`) VALUES
+(1, 'barajas', '2016-12-01 20:41:15', 'Mensaje 1 '),
+(1, 'ddduran', '2016-12-01 20:42:04', 'Mensaje 3'),
+(2, 'barajas', '2016-12-01 20:42:18', 'Mensaje 2'),
+(2, 'laserraptor', '2016-12-01 20:42:18', 'Mensaje 4');
 
 -- --------------------------------------------------------
 
