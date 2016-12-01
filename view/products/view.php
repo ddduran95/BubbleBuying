@@ -15,19 +15,16 @@
 
     <article id = "maincontent">
       <div class = "main">
-        <a class="btn_producto" href="#">
-            <div class="cuadro_producto">
-        			<img class="img-product" src="imgs/producto/<?=$product->getPhoto() ?>">
+
+          <img class="view-photo" src="imgs/producto/<?=$product->getPhoto() ?>">
+        
+        <div class="view-info">
+          <p><?=$product->getPhoto() ?></p>
         			<p class = "precio"> <?=$product->getPrize() ?>€</p>
         			<p class = "titulo"> <?=$product->getTitle() ?></p>
         			<p class = "descripcion"> <?php echo substr($product->getDescription(),0,24); ?>...</p>
-                <a class="btn_categoria" href="#">
-                  <div class="categorias">
-        			         <div class = "categoria"><i class="fa fa-tag"></i> cosas de casa </div>
-                    </div>
-                </a>
-            </div>
-        </a>
+        </div>
+
 
     		<?php
     		//show actions ONLY for the author of the post (if logged)
