@@ -19,7 +19,7 @@
 
         <a class="btn_producto" href="#">
             <div class="cuadro_producto">
-        			<img src="imgs/producto/<?=$product->getPhoto() ?>" height="150" width="150" style="border-top-left-radius:7px;border-top-right-radius:7px">
+        			<img class="img-product" src="imgs/producto/<?=$product->getPhoto() ?>">
         			<p class = "precio"> <?=$product->getPrize() ?>€</p>
         			<p class = "titulo"> <?=$product->getTitle() ?></p>
         			<p class = "descripcion"> <?php echo substr($product->getDescription(),0,24); ?>...</p>

@@ -124,8 +124,11 @@ a {
 
 }
 
-.imagen_producto{
-	size: 200px, 200px;
+.img-product{
+  height:150px;
+  width:150px;
+  border-top-left-radius:7px;
+  border-top-right-radius:7px;
 }
 .precio{
     text-align: center;
