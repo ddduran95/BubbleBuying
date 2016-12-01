@@ -146,24 +146,27 @@ class ProductsController extends BaseController {
       $product->setPrize($_POST["prize"]);
 
       //Upload image to server if everything's ok
+      if ($_FILES['photo']['name'] != NULL){
+        $target_dir = 'imgs/producto/';
+        $target_file = $target_dir . basename($_FILES['photo']['name']);
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+        $temp = explode (".", $_FILES['photo']['name']);
+        $nombreImagen = round (microtime(true)) . '.' . end($temp);
+        // Comprueba la longitud del archivo
+        if ($_FILES["photo"]["size"] > 1000000 ) {
+            throw new Exception("Image is too big to be uploaded");
+        }
+        // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG"
+        && $imageFileType != "GIF" ) {
+            throw new Exception("Format of this image is not allowed");
+        }
 
-      $target_dir = 'imgs/producto/';
-      $target_file = $target_dir . basename($_FILES['photo']['name']);
-      $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-      $temp = explode (".", $_FILES['photo']['name']);
-      $nombreImagen = round (microtime(true)) . '.' . end($temp);
-      // Comprueba la longitud del archivo
-      if ($_FILES["photo"]["size"] > 1000000 ) {
-          throw new Exception("Image is too big to be uploaded");
-      }
-      // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
-      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-      && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG"
-      && $imageFileType != "GIF" ) {
-          throw new Exception("Format of this image is not allowed");
+      }else{
+        $nombreImagen = null;
       }
 
-      move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
 
 
       $product->setPhoto($nombreImagen);
@@ -174,6 +177,8 @@ class ProductsController extends BaseController {
       try {
       	// validate Post object
       	$product->checkIsValidForCreate(); // if it fails, ValidationException
+
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
 
       	// save the Product object into the database
       	$this->productMapper->save($product);
