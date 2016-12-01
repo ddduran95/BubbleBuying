@@ -389,7 +389,7 @@ li{
 
 }
 
-.add-product{
+.add-product, .product-view{
   padding: 10px;
   margin: 15px;
   background-color: #F5F5F5;
@@ -402,10 +402,32 @@ li{
 
 }
 
+.product-view h1{
+    font-size: 2.5em;
+}
+
 .add-product h1{
     font-size: 2.5em;
 }
 
+
+.user-data{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 35%;
+  font-size: 1.75em;
+  align-content: flex-start;
+
+}
+
+.user-photo{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1em;
+  align-content: center;
+
+}
 
 .login{
   padding: 10px;
@@ -454,13 +476,21 @@ li{
 .formulario .btn-registro{
   margin: 10px;
   padding: 10px;
-  flex-basis: 10%;
+  max-width: auto;
   border-radius: 10px;
   border: 5px solid white;
   background-color: #24C9F2;
   color: white;
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.05em;
+  align-self: center;
+}
+
+.view-form{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .main{
