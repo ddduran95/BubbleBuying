@@ -128,6 +128,19 @@ class Chat {
   }
 
   /**
+   * Gets the other user of this chat
+
+   * @param User $user the other user of this chat
+   * @return User The vendedor/Buyer of this chat
+   */
+   public function getOther($currentuser) {
+     if($this->getComprador()->getAlias() == $currentuser)
+        return $this->getVendedor();
+    else
+        return $this->getComprador();
+   }
+
+  /**
    * Gets the list of mensajes of this chat
    *
    * @return mixed The list of mensajes of this chat

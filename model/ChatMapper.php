@@ -2,9 +2,11 @@
 // file: model/ChatMapper.php
 require_once(__DIR__."/../core/PDOConnection.php");
 require_once(__DIR__."/../model/User.php");
+require_once(__DIR__."/../model/UserMapper.php");
 require_once(__DIR__."/../model/Chat.php");
 require_once(__DIR__."/../model/Mensaje.php");
 require_once(__DIR__."/../model/Product.php");
+require_once(__DIR__."/../model/ProductMapper.php");
 
 /**
  * Class ChatMapper
@@ -38,15 +40,15 @@ class ChatMapper {
     $chat_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $chats = array();
+    $UserMapper = new UserMapper();
+    $ProductMapper = new ProductMapper();
 
     foreach ($chat_db as $chat) {
-      $producto = new Product($chat["producto"]);
-      $vendedor = new User($chat["vendedor"]);
-      $comprador = new User($chat["comprador"]);
-
-      array_push($chats, new Chat($chat["chat"], $producto, $comprador, $vendedor));
+      $producto = $ProductMapper->findById($chat["producto"]);
+      $vendedor = $UserMapper->findByAlias($chat["vendedor"]);
+      $comprador = $UserMapper->findByAlias($chat["comprador"]);
+      $chats[$chat["chat"]] = new Chat($chat["chat"], $producto, $comprador, $vendedor);
     }
-
     return $chats;
   }
 
@@ -60,16 +62,17 @@ class ChatMapper {
    * if the Chat is not found
    */
   public function findById($chatid){
-    $stmt = $this->db->prepare("SELECT * FROM chat WHERE id=?");
+    $stmt = $this->db->prepare("SELECT * FROM chat WHERE chat=?");
     $stmt->execute(array($chatid));
     $chat = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($chat != null) {
-      return new Chat(
-	$chat["id"],
-	$chat["title"],
-	$chat["content"],
-	new User($chat["vendedor"]));
+        $UserMapper = new UserMapper();
+        $ProductMapper = new ProductMapper();
+        $producto = $ProductMapper->findById($chat["producto"]);
+        $vendedor = $UserMapper->findByAlias($chat["vendedor"]);
+        $comprador = $UserMapper->findByAlias($chat["comprador"]);
+        $chat = new Chat($chat["chat"], $producto, $comprador, $vendedor);
     } else {
       return NULL;
     }
@@ -84,42 +87,47 @@ class ChatMapper {
    * @return Chat The Chat instances (without mensajes). NULL
    * if the Chat is not found
    */
-  public function findByIdWithMensajess($chatid){
+  public function findByIdWithMensajes($chatid){
     $stmt = $this->db->prepare("SELECT
-	P.id as 'chat.id',
-	P.title as 'chat.title',
-	P.content as 'chat.content',
-	P.vendedor as 'chat.vendedor',
-	C.id as 'comment.id',
-	C.content as 'comment.content',
-	C.chat as 'comment.chat',
-	C.vendedor as 'comment.vendedor'
+	C.chat as 'chat.chat',
+	C.producto as 'chat.producto',
+	C.Comprador as 'chat.comprador',
+	C.vendedor as 'chat.vendedor',
+	M.chat as 'mensaje.chat',
+	M.autor as 'mensaje.autor',
+    M.mensaje as 'mensaje.mensaje',
+	M.tiempo as 'mensaje.tiempo'
 
-	FROM chat P LEFT OUTER JOIN mensajes C
-	ON P.id = C.chat
-	WHERE
-	P.id=? ");
+	FROM chat C LEFT OUTER JOIN mensajes M ON C.chat = M.chat
+	WHERE C.chat=?
+    ORDER BY M.tiempo");
 
     $stmt->execute(array($chatid));
     $chat_wt_mensajes= $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if (sizeof($chat_wt_mensajes) > 0) {
-      $chat = new Chat($chat_wt_mensajes[0]["chat.id"],
-		       $chat_wt_mensajes[0]["chat.title"],
-		       $chat_wt_mensajes[0]["chat.content"],
-		       new User($chat_wt_mensajes[0]["chat.vendedor"]));
-      $mensajes_array = array();
-      if ($chat_wt_mensajes[0]["comment.id"]!=null) {
-        foreach ($chat_wt_mensajes as $comment){
-          $comment = new Mensajes( $comment["comment.id"],
-                                  $comment["comment.content"],
-                                  new User($comment["comment.vendedor"]),
-                                  $chat);
-          array_push($mensajes_array, $comment);
-        }
-      }
-      $chat->setMensajess($mensajes_array);
+    $UserMapper = new UserMapper();
+    $ProductMapper = new ProductMapper();
 
+    if (sizeof($chat_wt_mensajes) > 0) {
+
+        $producto = $ProductMapper->findById($chat_wt_mensajes[0]["chat.producto"]);
+        $vendedor = $UserMapper->findByAlias($chat_wt_mensajes[0]["chat.vendedor"]);
+        $comprador = $UserMapper->findByAlias($chat_wt_mensajes[0]["chat.comprador"]);
+
+        $mensajes_array = array();
+        if ($chat_wt_mensajes[0]["mensaje.chat"]!=null) {
+            foreach ($chat_wt_mensajes as $mensaje){
+                $chat_id = $mensaje["mensaje.chat"];
+                $contenido =  $mensaje["mensaje.mensaje"];
+                $autor = $UserMapper->findByAlias($mensaje["mensaje.autor"]);
+                $tiempo = $mensaje["mensaje.tiempo"];
+
+                $mensaje = new Mensaje($autor,$this->findById($chat_id),$contenido,$tiempo);
+                array_push($mensajes_array, $mensaje);
+            }
+        }
+
+      $chat = new Chat($chat_wt_mensajes[0]["chat.chat"], $producto, $comprador, $vendedor,$mensajes_array);
       return $chat;
     }else {
       return NULL;
