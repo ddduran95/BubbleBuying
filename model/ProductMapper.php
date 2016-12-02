@@ -84,7 +84,7 @@ class ProductMapper {
 
     if($product != null) {
       //Suponiendo que la clase para Usuario se acabe llamando User
-      return new Product($product["id_producto"], $product["titulo"], $product["descripcion"], new User($product["vendedor"]),
+      return new Product($product["id_producto"], $product["titulo"], $product["descripcion"], new User(NULL,$product["vendedor"]),
       $product["precio"], $product["foto"]);
     } else {
       return NULL;
