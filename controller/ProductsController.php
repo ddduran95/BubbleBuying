@@ -97,7 +97,7 @@ class ProductsController extends BaseController {
     if(isset($_GET["alias"])){
       $products = $this->productMapper->findBySeller($_GET["alias"]);
     }else{
-      $products = $this->productMapper->findBySeller($this->currentUser->getName());
+      $products = $this->productMapper->findBySeller($this->currentUser->getAlias());
     }
     // put the Product object to the view
     $this->view->setVariable("products", $products);
@@ -117,9 +117,6 @@ class ProductsController extends BaseController {
 
   public function view(){
 
-    if (!isset($this->currentUser)) {
-      throw new Exception("Not in session. See your products requires login");
-    }
     if (!isset($_GET["id"])) {
 			throw new Exception("id is mandatory");
 		}

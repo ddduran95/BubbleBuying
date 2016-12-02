@@ -180,11 +180,11 @@ class UsersController extends BaseController {
     }
 
       // find the current User in the database
-    $user = $this->userMapper->findByAlias($this->currentUser->getName());
+    $user = $this->userMapper->findByAlias($this->currentUser->getAlias());
 
     if (isset($_POST["submit"])){ // reaching via HTTP Post...
       // populate the User object with data form the form
-      
+
       $target_dir = 'imgs/perfil/';
       $target_file = $target_dir . basename($_FILES['photo']['name']);
       $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
