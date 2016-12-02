@@ -28,6 +28,22 @@
           <input type="number" name="prize" class="input-form">
 
 
+          <?= i18n("Category") ?>:
+          <select name="category" class="input-form">
+            <option value="Tecnologia"><?=i18n("Tecnology")?></option>
+            <option value="Libros"><?=i18n("Books")?></option>
+            <option value="Cosas de casa"><?=i18n("Home")?></option>
+            <option value="Videojuegos"><?=i18n("Videogames")?></option>
+            <option value="Niños"><?=i18n("Children")?></option>
+            <option value="Electrodomesticos"><?=i18n("Home Appliances")?></option>
+            <option value="Ropa"><?=i18n("Clothing")?></option>
+            <option value="Motor"><?=i18n("Motor")?></option>
+            <option value="Deporte"><?=i18n("Sport")?></option>
+
+          </select>
+
+
+
           <?= i18n("Photo") ?>: <?= isset($errors["photo"])?$errors["photo"]:"" ?>
           <input type="file" name="photo" class="input-form">
 
