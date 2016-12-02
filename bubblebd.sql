@@ -72,7 +72,7 @@ INSERT INTO `mensajes` (`chat`, `autor`, `tiempo`, `mensaje`) VALUES
 
 CREATE TABLE `producto` (
   `titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(400) COLLATE utf8_spanish_ci NOT NULL,
   `precio` double NOT NULL,
   `foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `id_producto` int(11) NOT NULL,

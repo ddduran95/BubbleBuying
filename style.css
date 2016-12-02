@@ -102,6 +102,9 @@ a {
   text-align: center;
   word-wrap: break-word;
   overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .btn_producto{
   text-decoration: none;

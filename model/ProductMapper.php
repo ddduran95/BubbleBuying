@@ -98,14 +98,15 @@ class ProductMapper {
    * if the Post is not found
    */
   public function findById($productid){
-    $stmt = $this->db->prepare("SELECT * FROM producto WHERE id_producto=?");
+    $stmt = $this->db->prepare("SELECT * FROM producto, usuario WHERE usuario.alias=producto.vendedor AND producto.id_producto=?");
     $stmt->execute(array($productid));
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($product != null) {
       //Suponiendo que la clase para Usuario se acabe llamando User
-      return new Product($product["id_producto"], $product["titulo"], $product["descripcion"], new User(NULL,$product["vendedor"]),
+      return new Product($product["id_producto"], $product["titulo"], $product["descripcion"], new User(NULL,$product["vendedor"],NULL,$product["perfil"]),
       $product["precio"], $product["foto"]);
+
     } else {
       return NULL;
     }
