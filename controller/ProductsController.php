@@ -86,15 +86,19 @@ class ProductsController extends BaseController {
    * @return void
    *
    */
-  public function viewMyProducts(){
+ public function viewMyProducts(){
 
     if (!isset($this->currentUser)) {
       throw new Exception("Not in session. See your products requires login");
     }
     // find the Product object in the database
-    $products = $this->productMapper->findBySeller($this->currentUser->getName());
 
 
+    if(isset($_GET["alias"])){
+      $products = $this->productMapper->findBySeller($_GET["alias"]);
+    }else{
+      $products = $this->productMapper->findBySeller($this->currentUser->getName());
+    }
     // put the Product object to the view
     $this->view->setVariable("products", $products);
 
