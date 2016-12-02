@@ -6,7 +6,6 @@
 
  $product = $view->getVariable("product");
  $currentuser = $view->getVariable("currentusername");
-die;
  $view->setVariable("title", "Product");
 ?>
 
