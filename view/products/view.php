@@ -24,22 +24,21 @@
           	<p class = "descripcion view-description"> <?=$product->getDescription() ?></p>
           </div>
           <div class="product-info seller-product">
-            <div class="view-seller">
-                  <?php if ($product->getSeller()->getPhoto() == NULL){ ?>
-                    <img class="seller-info" src = "imgs/perfil/predeterminado.jpg" >
-                  <?php }else{ ?>
-                    <img class="seller-info" src = "imgs/perfil/<?=$product->getSeller()->getPhoto() ?>">
-                  <?php } ?>
-                  <strong> <?=$product->getSeller()->getAlias() ?></strong>
-            </div>
-            <div class="view-seller">
-                  <?php if ($product->getSeller()->getPhoto() == NULL){ ?>
-                    <img class="seller-info" src = "imgs/perfil/predeterminado.jpg" >
-                  <?php }else{ ?>
-                    <img class="seller-info" src = "imgs/perfil/<?=$product->getSeller()->getPhoto() ?>">
-                  <?php } ?>
-                  <strong> <?=$product->getSeller()->getAlias() ?></strong>
-            </div>
+            <a href="index.php?controller=products&amp;action=viewMyProducts&amp;alias=<?=$product->getSeller()->getAlias() ?>">
+              <div class="view-seller">
+                    <?php if ($product->getSeller()->getPhoto() == NULL){ ?>
+                      <img class="seller-info" src = "imgs/perfil/predeterminado.jpg" >
+                    <?php }else{ ?>
+                      <img class="seller-info" src = "imgs/perfil/<?=$product->getSeller()->getPhoto() ?>">
+                    <?php } ?>
+                    <strong> <?=$product->getSeller()->getAlias() ?></strong>
+              </div>
+            </a>
+            <a>
+              <div class="btn-chat">
+                <p><i class="fa fa-comments" aria-hidden="true"></i>Chat</p>
+              </div>
+            </a>
           </div>
         </div>
 
