@@ -88,7 +88,13 @@ INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`
 ('Taza Star Wars', 'Es una taza muy bonita casi sin usar', 15, 'taza.jpg', 1, 'barajas', 'Cosas de casa'),
 ('Moto', 'Corre a toda velocidad', 20, 'moto.jpg', 2, 'ddduran', 'Motor'),
 ('Iphone', 'Buen movil si no fuera porque es un Iphone.', 600, 'iphone.jpg', 3, 'laserraptor', 'Tecnologia'),
-('Figura Sora', 'Figura de Sora, personaje principal de la saga kingdom hearts. Buen estado. Chulísima.', 600, 'figurasora.jpg', 4, 'laserraptor', 'Videojuegos');
+('Vientos de Invierno', 'Sexta entrega de la famosa saga de Canción de Hielo y Fuego. Está nuevo.', 40, 'vientosinvierno.jpg', 4, 'ddduran', 'Libros'),
+('Bloorborne GOTY', 'Edición Game of the Year de Bloodborne para PS4.', 34, 'bloodborne.jpg', 5, 'laserraptor', 'Videojuegos'),
+('Lego Star Wars', 'Lego Star Wars para niños de entre 7-14 años. Sin usar por falta de niño.', 59.99, 'lego.jpg', 6, 'barajas', 'Niños'),
+('Microondas', 'Microondas perfecto estado. Quenta pero non cociña.', 24, 'microondas.jpg', 7, 'ddduran', 'Electrodomesticos'),
+('Abrigo naranja Zara', 'Abrigo de Zara de color naranja. Abriga mucho. Ideal para cuando tienes frío.', 40, 'abrigo.jpg', 8, 'barajas', 'Ropa'),
+('Balon de fútbol Mikasa', 'Es muy duro. No se recomienda golpearlo con la cabeza.', 20, 'mikasa.jpg', 9, 'laserraptor', 'Deportes'),
+('Figura Sora', 'Figura de Sora, personaje principal de la saga kingdom hearts. Buen estado. Chulísima.', 135, 'figurasora.jpg', 10, 'laserraptor', 'Videojuegos');
 
 -- --------------------------------------------------------
 
