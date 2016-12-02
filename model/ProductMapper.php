@@ -68,6 +68,26 @@ class ProductMapper {
     return $products;
   }
 
+  public function findSearch($search) {
+    $stmt = $this->db->query("SELECT * FROM usuario, producto WHERE usuario.alias = producto.vendedor AND
+      (producto.categoria LIKE '%$search%' OR
+        producto.titulo LIKE '%$search%' OR
+          producto.vendedor LIKE '%$search%' OR
+              producto.descripcion LIKE '%$search%')");
+    $products_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $products = array();
+
+    foreach ($products_db as $product) {
+      //Suponiendo que la clase para Usuario se acabe llamando User
+      $vendedor = new User($product["nombre"], $product["alias"], $product["password"], $product["perfil"]);
+      array_push($products, new Product($product["id_producto"], $product["titulo"], $product["descripcion"], $vendedor,
+      $product["precio"], $product["foto"], $product["categoria"]));
+    }
+
+    return $products;
+  }
+
   /**
    * Loads a Post from the database given its id
    *
@@ -78,14 +98,15 @@ class ProductMapper {
    * if the Post is not found
    */
   public function findById($productid){
-    $stmt = $this->db->prepare("SELECT * FROM producto WHERE id_producto=?");
+    $stmt = $this->db->prepare("SELECT * FROM producto, usuario WHERE usuario.alias=producto.vendedor AND producto.id_producto=?");
     $stmt->execute(array($productid));
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($product != null) {
       //Suponiendo que la clase para Usuario se acabe llamando User
-      return new Product($product["id_producto"], $product["titulo"], $product["descripcion"], new User($product["vendedor"]),
+      return new Product($product["id_producto"], $product["titulo"], $product["descripcion"], new User(NULL,$product["vendedor"],NULL,$product["perfil"]),
       $product["precio"], $product["foto"]);
+
     } else {
       return NULL;
     }
@@ -113,9 +134,9 @@ class ProductMapper {
   }
 
   public function save(Product $product) {
-    $stmt = $this->db->prepare("INSERT INTO producto (titulo, descripcion, precio, foto, id_producto, vendedor) values (?,?,?,?,?,?)");
+    $stmt = $this->db->prepare("INSERT INTO producto (titulo, descripcion, precio, foto, id_producto, vendedor, categoria) values (?,?,?,?,?,?,?)");
     $stmt->execute(array($product->getTitle(), $product->getDescription(), $product->getPrize(), $product->getPhoto(),
-    $product->getId(), $product->getSeller()->getName()));
+    $product->getId(), $product->getSeller()->getName(), $product->getCategory()));
     return $this->db->lastInsertId();
   }
 

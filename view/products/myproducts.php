@@ -25,7 +25,7 @@
         			<p class = "descripcion"> <?php echo substr($product->getDescription(),0,24); ?>...</p>
                 <a class="btn_categoria" href="#">
                   <div class="categorias">
-        			         <div class = "categoria"><i class="fa fa-tag"></i> <?=$product->getCategory() ?> </div>
+        			         <div class = "categoria"><i class="fa fa-tag"></i> <?=i18n($product->getCategory()) ?> </div>
                     </div>
                 </a>
             </div>

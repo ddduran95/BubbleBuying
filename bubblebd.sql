@@ -72,7 +72,7 @@ INSERT INTO `mensajes` (`chat`, `autor`, `tiempo`, `mensaje`) VALUES
 
 CREATE TABLE `producto` (
   `titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(400) COLLATE utf8_spanish_ci NOT NULL,
   `precio` double NOT NULL,
   `foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `id_producto` int(11) NOT NULL,
@@ -93,7 +93,8 @@ INSERT INTO `producto` (`titulo`, `descripcion`, `precio`, `foto`, `id_producto`
 ('Lego Star Wars', 'Lego Star Wars para niños de entre 7-14 años. Sin usar por falta de niño.', 59.99, 'lego.jpg', 6, 'barajas', 'Niños'),
 ('Microondas', 'Microondas perfecto estado. Quenta pero non cociña.', 24, 'microondas.jpg', 7, 'ddduran', 'Electrodomesticos'),
 ('Abrigo naranja Zara', 'Abrigo de Zara de color naranja. Abriga mucho. Ideal para cuando tienes frío.', 40, 'abrigo.jpg', 8, 'barajas', 'Ropa'),
-('Balon de fútbol Mikasa', 'Es muy duro. No se recomienda golpearlo con la cabeza.', 20, 'mikasa.jpg', 9, 'laserraptor', 'Deportes'),
+('Balon de fútbol', 'Balón Mikasa. Es muy duro. No se recomienda golpearlo con la cabeza.', 20, 'mikasa.jpg', 9, 'laserraptor', 'Deportes'),
+('Mochila Frozen', 'Mochila de Frozen muy bonita. La vendo porque mi hija ya se ha hecho mayor. Pues con 20 años ya me dirás tú que hacía con esta mochila, pero bueno, a lo que iba porque al final me voy por las ramas y me pierdo, comprala por favor.', 22, 'mochila.jpg', 11, 'barajas', 'Niños'),
 ('Figura Sora', 'Figura de Sora, personaje principal de la saga kingdom hearts. Buen estado. Chulísima.', 135, 'figurasora.jpg', 10, 'laserraptor', 'Videojuegos');
 
 -- --------------------------------------------------------

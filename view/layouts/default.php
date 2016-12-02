@@ -23,11 +23,10 @@
     <!-- header -->
     <header>
       <a class="logo" href="index.php?controller=products&amp;action=index"></a>
-
-      <div class = "bloque_header" >
-        <a class= "btn_buscar" href="#"><i class="fa fa-search"></i></a>
-        <input type="text" class = "buscar" placeholder= <?=i18n("search") ?>>
-      </div>
+      <form name = "searching" class = "bloque_header" action="index.php?controller=products&amp;action=index" method="POST">
+        <a class= "btn_buscar" onclick="searching.submit()"><i class="fa fa-search"></i></a>
+        <input name="search" type="text" class = "buscar" placeholder= <?=i18n("search") ?>>
+      </form>
       <div class = "bloque_header" >
           <!-- Boton si esta logeuado -->
       	<?php

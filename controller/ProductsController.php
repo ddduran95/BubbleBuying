@@ -49,6 +49,8 @@ class ProductsController extends BaseController {
     if (isset($_GET["category"])){
       $products = $this->productMapper->findCategory($_GET["category"]);
 
+    }else if (isset($_POST["search"])){
+      $products = $this->productMapper->findSearch($_POST["search"]);
     }else{
       $products = $this->productMapper->findAll();
     }
@@ -84,15 +86,19 @@ class ProductsController extends BaseController {
    * @return void
    *
    */
-  public function viewMyProducts(){
+ public function viewMyProducts(){
 
     if (!isset($this->currentUser)) {
       throw new Exception("Not in session. See your products requires login");
     }
     // find the Product object in the database
-    $products = $this->productMapper->findBySeller($this->currentUser->getName());
 
 
+    if(isset($_GET["alias"])){
+      $products = $this->productMapper->findBySeller($_GET["alias"]);
+    }else{
+      $products = $this->productMapper->findBySeller($this->currentUser->getName());
+    }
     // put the Product object to the view
     $this->view->setVariable("products", $products);
 
@@ -177,6 +183,7 @@ class ProductsController extends BaseController {
       $product->setTitle($_POST["title"]);
       $product->setDescription($_POST["description"]);
       $product->setPrize($_POST["prize"]);
+      $product->setCategory($_POST["category"]);
 
       //Upload image to server if everything's ok
       if ($_FILES['photo']['name'] != NULL){
@@ -226,7 +233,7 @@ class ProductsController extends BaseController {
       	// perform the redirection. More or less:
       	// header("Location: index.php?controller=products&action=index")
       	// die();
-      	$this->view->redirect("products", "view");
+      	$this->view->redirect("products", "viewmyproducts");
 
       }catch(ValidationException $ex) {
       	// Get the errors array inside the exepction...

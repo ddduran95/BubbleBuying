@@ -16,26 +16,33 @@
     <article id = "maincontent">
       <div class = "main">
 
-          <img class="view-photo" src="imgs/producto/<?=$product->getPhoto() ?>">
-        
+        <img class="view-photo" src="imgs/producto/<?=$product->getPhoto() ?>">
         <div class="view-info">
-          <p><?=$product->getPhoto() ?></p>
-        			<p class = "precio"> <?=$product->getPrize() ?>€</p>
-        			<p class = "titulo"> <?=$product->getTitle() ?></p>
-        			<p class = "descripcion"> <?php echo substr($product->getDescription(),0,24); ?>...</p>
+          <div class="product-info">
+            <p class = "titulo view-tittle"> <?=$product->getTitle() ?></p>
+          	<p class = "precio view-prize"> <?=$product->getPrize() ?>€</p>
+          	<p class = "descripcion view-description"> <?=$product->getDescription() ?></p>
+          </div>
+          <div class="product-info seller-product">
+            <a href="index.php?controller=products&amp;action=viewMyProducts&amp;alias=<?=$product->getSeller()->getAlias() ?>">
+              <div class="view-seller">
+                    <?php if ($product->getSeller()->getPhoto() == NULL){ ?>
+                      <img class="seller-info" src = "imgs/perfil/predeterminado.jpg" >
+                    <?php }else{ ?>
+                      <img class="seller-info" src = "imgs/perfil/<?=$product->getSeller()->getPhoto() ?>">
+                    <?php } ?>
+                    <strong> <?=$product->getSeller()->getAlias() ?></strong>
+              </div>
+            </a>
+            <a>
+              <div class="btn-chat">
+                <p><i class="fa fa-comments" aria-hidden="true"></i>Chat</p>
+              </div>
+            </a>
+          </div>
         </div>
 
 
-    		<?php
-    		//show actions ONLY for the author of the post (if logged)
-
-    		if (isset($currentuser) && $currentuser == $product->getAuthor()->getUsername()): ?>
-
-    		  <?php
-    		  // 'Delete Button': show it as a link, but do POST in order to preserve
-    		  // the good semantic of HTTP
-    		  ?>
-        <?php endif; ?>
 
       </div>
     </article>
