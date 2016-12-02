@@ -417,18 +417,19 @@ li{
   margin: 15px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.19);
   padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .seller-product{
   display:flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .seller-info{
   height:80px;
   width:80px;
   border-radius: 100%;
-  border: 1px solid #E5E5E5;
 
 }
 .view-tittle{
@@ -442,9 +443,28 @@ li{
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid #00babf;
+  padding:5px;
+  color: black;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.btn-chat{
+  background-color:#34C9F2;
+  border-radius: 5px;
+  font-size: 1.75em;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.product-info a:visited{
+  color:black;
+}
 
 .view-prize{
   font-size: 3em;
