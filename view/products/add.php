@@ -14,14 +14,14 @@
     <div class = "add-product">
         <h1><?= i18n("New Product")?></h1>
         <form enctype = "multipart/form-data" action="index.php?controller=products&amp;action=add" method="POST" class="formulario">
-          <input type="hidden" name="MAX_FILE_SIZE" value="1000000" class="input" />
+          <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
 
     	    <?= i18n("Title") ?>: <?= isset($errors["title"])?$errors["title"]:"" ?>
           <input type="text" name="title" class="input-form">
 
 
     	    <?= i18n("Short Description") ?>: <?= isset($errors["description"])?$errors["description"]:"" ?>
-    	    <textarea name="description" rows="2" cols="20"></textarea>
+    	    <textarea name="description" rows="2" cols="20" class="input-form"></textarea>
 
 
           <?= i18n("Prize") ?>: <?= isset($errors["prize"])?$errors["prize"]:"" ?>
@@ -29,7 +29,7 @@
 
 
           <?= i18n("Category") ?>:
-          <select name="category" class="input-form">
+          <select name="category" class="add-select input-form">
             <option value="Tecnologia"><?=i18n("Tecnology")?></option>
             <option value="Libros"><?=i18n("Books")?></option>
             <option value="Cosas de casa"><?=i18n("Home")?></option>

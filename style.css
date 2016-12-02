@@ -567,21 +567,13 @@ li{
   align-content: flex-start;
 }
 
-.formulario input{
+.add-select,.formulario textarea, .formulario input{
   font-size: 0.75em;
   margin-top: 5px;
   border-radius: 5px;
   border: 2px solid #34C9F2;
   margin-bottom: 10px;
 
-}
-
-.formulario textarea{
-  font-size: 0.75em;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 2px solid #34C9F2;
-  margin-bottom: 10px;
 }
 
 .formulario .btn-registro{
@@ -605,7 +597,7 @@ li{
 }
 
 .formulario .input-form{
-  font-size: 0.55em;
+  font-size: 0.65em;
 }
 
 .main{
