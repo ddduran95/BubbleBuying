@@ -45,8 +45,7 @@ class BaseController {
       //add current user to the view, since some views require it
 
       //AQUI DEBERIA DE IR CURRENTUSER->GETALIAS()
-      $this->view->setVariable("currentusername",
-				  $this->currentUser->getAlias());
+      $this->view->setVariable("currentusername",$this->currentUser->getAlias());
     }
   }
 }

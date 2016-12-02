@@ -45,10 +45,10 @@ class Mensaje {
    * @param User $author The author of the mensaje
    * @param Chat $chat The parent chat
    */
-  public function __construct(User $autor=NULL, Chat $chat=NULL, $mensaje=NULL) {
+  public function __construct(User $autor=NULL, Chat $chat=NULL, $mensaje=NULL,$tiempo=NULL) {
     $this->autor= $autor;
     $this->chat= $chat;
-    $this->tiempo= date("h:i:sa");
+    $this->tiempo= $tiempo;
     $this->mensaje= $mensaje;
   }
 
