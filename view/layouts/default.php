@@ -57,15 +57,15 @@
     			<li> <a class="btn_menu prioridad_1" href="#"><i class="fa fa-comments"></i> <?= i18n("My Chats") ?></a></li>
     			<li id="categoriasmenuitem"><a class= "btn_menu prioridad_1" href="#"><i class="fa fa-chevron-down"></i> <?= i18n("Categories") ?></a>
 				<ul>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-laptop"></i> <?= i18n("Tecnology") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-book"></i> <?= i18n("Books") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-home"></i> <?= i18n("Home") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-gamepad"></i> <?= i18n("Game Consoles") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-child"></i> <?= i18n("Children") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-plug "></i> <?= i18n("Home Appliances") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-suitcase "></i> <?= i18n("Clothing") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-car "></i> <?= i18n("Motor") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="#"><i class="fa fa-futbol-o "></i> <?= i18n("Sport") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Tecnologia"><i class="fa fa-laptop"></i> <?= i18n("Tecnology") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Libros"><i class="fa fa-book"></i> <?= i18n("Books") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Cosas de casa"><i class="fa fa-home"></i> <?= i18n("Home") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Videojuegos"><i class="fa fa-gamepad"></i> <?= i18n("Videogames") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Niños"><i class="fa fa-child"></i> <?= i18n("Children") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Electrodomesticos"><i class="fa fa-plug "></i> <?= i18n("Home Appliances") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Ropa"><i class="fa fa-suitcase "></i> <?= i18n("Clothing") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Motor"><i class="fa fa-car "></i> <?= i18n("Motor") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Deporte"><i class="fa fa-futbol-o "></i> <?= i18n("Sport") ?> </a></li>
 				</ul>
 			</li>
 		</ul>
