@@ -29,7 +29,7 @@
         			         <div class = "categoria"><i class="fa fa-tag"></i> <?=i18n($product->getCategory()) ?> </div>
                     </div>
                 </a>
-                <a class="btn_vendedor" href="#">
+                <a class="btn_vendedor" href="index.php?controller=products&amp;action=viewMyProducts&amp;alias=<?=$product->getSeller()->getAlias() ?>">
                   <div class = "cuadro_vendedor">
                       <div class = "texto_vendedor">
                         <?php if ($product->getSeller()->getPhoto() == NULL){ ?>
@@ -47,16 +47,6 @@
             </div>
         </a>
 
-    		<?php
-    		//show actions ONLY for the author of the post (if logged)
-
-    		if (isset($currentuser) && $currentuser == $product->getAuthor()->getUsername()): ?>
-
-    		  <?php
-    		  // 'Delete Button': show it as a link, but do POST in order to preserve
-    		  // the good semantic of HTTP
-    		  ?>
-        <?php endif; ?>
       <?php endforeach; ?>
 
       </div>

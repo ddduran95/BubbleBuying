@@ -31,16 +31,6 @@
             </div>
         </a>
 
-    		<?php
-    		//show actions ONLY for the author of the post (if logged)
-
-    		if (isset($currentuser) && $currentuser == $product->getAuthor()->getUsername()): ?>
-
-    		  <?php
-    		  // 'Delete Button': show it as a link, but do POST in order to preserve
-    		  // the good semantic of HTTP
-    		  ?>
-        <?php endif; ?>
       <?php endforeach; ?>
 
       </div>
