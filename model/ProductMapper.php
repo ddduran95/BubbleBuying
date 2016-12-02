@@ -45,7 +45,24 @@ class ProductMapper {
       //Suponiendo que la clase para Usuario se acabe llamando User
       $vendedor = new User($product["nombre"], $product["alias"], $product["password"], $product["perfil"]);
       array_push($products, new Product($product["id_producto"], $product["titulo"], $product["descripcion"], $vendedor,
-      $product["precio"], $product["foto"]));
+      $product["precio"], $product["foto"], $product["categoria"]));
+    }
+
+    return $products;
+  }
+
+  public function findCategory($category) {
+    $stmt = $this->db->prepare("SELECT * FROM usuario, producto WHERE usuario.alias = producto.vendedor AND producto.categoria=?");
+    $stmt->execute(array($category));
+    $products_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $products = array();
+
+    foreach ($products_db as $product) {
+      //Suponiendo que la clase para Usuario se acabe llamando User
+      $vendedor = new User($product["nombre"], $product["alias"], $product["password"], $product["perfil"]);
+      array_push($products, new Product($product["id_producto"], $product["titulo"], $product["descripcion"], $vendedor,
+      $product["precio"], $product["foto"], $product["categoria"]));
     }
 
     return $products;
@@ -89,7 +106,7 @@ class ProductMapper {
     foreach ($products_db as $product) {
 
       array_push($products, new Product($product["id_producto"], $product["titulo"], $product["descripcion"],
-      $user, $product["precio"], $product["foto"]));
+      $user, $product["precio"], $product["foto"], $product["categoria"]));
     }
 
     return $products;

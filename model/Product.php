@@ -49,6 +49,9 @@ class Product {
    */
   private $seller;
 
+  private $category;
+
+
   /**
    * The constructor
    *
@@ -58,13 +61,14 @@ class Product {
    * @param User $author The author of the post
    * @param mixed $comments The list of comments
    */
-  public function __construct($id=NULL, $title=NULL, $description=NULL, User $seller=NULL, $prize=NULL, $photo=NULL) {
+  public function __construct($id=NULL, $title=NULL, $description=NULL, User $seller=NULL, $prize=NULL, $photo=NULL, $category=NULL) {
     $this->id = $id;
     $this->title = $title;
     $this->description = $description;
     $this->seller = $seller;
     $this->prize = $prize;
     $this->photo = $photo;
+    $this->category = $category;
 
   }
 
@@ -159,6 +163,14 @@ class Product {
 
   public function setPrize($prize) {
     $this->prize = $prize;
+  }
+
+  public function getCategory() {
+    return $this->category;
+  }
+
+  public function setCategory($category) {
+    $this->category = $category;
   }
 
 
