@@ -10,8 +10,6 @@
 
  $currentuser = $view->getVariable("currentusername");
 
-
-
  $view->setVariable("title", "Chats");
 ?>
 
@@ -47,11 +45,7 @@
      </div>
     </div>
     <div class="cuerpo_chat">
-        <?php
-
-        foreach ($chat->getMensajes() as $mensaje) {
-            var_dump($mensaje->getAutor()->getAlias());
-            var_dump($currentuser);
+        <?php foreach ($chat->getMensajes() as $mensaje) {
             if($mensaje->getAutor()->getAlias() == $currentuser){
                 ?> <div class="comentario right"> <?= $mensaje->getMensaje() ?></div> <?php
             }else{
@@ -60,14 +54,14 @@
         } ?>
 
     </div>
-    <div class="caja_texto_chat">
+    <form class="caja_texto_chat" action = "method">
         <div class = "input_chat">
             <input type="text" class = "texto_chat" placeholder="Escribir mensaje" >
         </div>
         <div>
             <a class= "btn_enviar_texto" href="#"><i class="fa fa-paper-plane" aria-hidden="false"></i></a>
       </div>
-    </div>
+  </form>
   </div>
 </div>
 </article>
