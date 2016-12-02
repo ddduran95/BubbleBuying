@@ -46,7 +46,12 @@ class ProductsController extends BaseController {
   public function index() {
 
     // obtain the data from the database
-    $products = $this->productMapper->findAll();
+    if (isset($_GET["category"])){
+      $products = $this->productMapper->findCategory($_GET["category"]);
+
+    }else{
+      $products = $this->productMapper->findAll();
+    }
 
     // put the array containing Product object to the view
     $this->view->setVariable("products", $products);
