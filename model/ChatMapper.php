@@ -143,21 +143,26 @@ class ChatMapper {
    * @return int The mew chat id
    */
   public function save(Chat $chat) {
-    $stmt = $this->db->prepare("INSERT INTO chat(title, content, vendedor) values (?,?,?)");
-    $stmt->execute(array($chat->getTitle(), $chat->getContent(), $chat->getAuthor()->getUsername()));
+    $stmt = $this->db->prepare("INSERT INTO chat(producto, comprador, vendedor) values (?,?,?)");
+    $stmt->execute(array($chat->getProduct()->getId(), $chat->getComprador()->getAlias(), $chat->getVendedor()->getAlias()));
     return $this->db->lastInsertId();
   }
 
   /**
-   * Updates a Chat in the database
+   * checkIfExist a Chat in the database
    *
-   * @param Chat $chat The chat to be updated
+   * @param Chat $chat The chat to be checked
    * @throws PDOException if a database error occurs
    * @return void
    */
-  public function update(Chat $chat) {
-    $stmt = $this->db->prepare("UPDATE chat set title=?, content=? where id=?");
-    $stmt->execute(array($chat->getTitle(), $chat->getContent(), $chat->getId()));
+  public function checkIfExist(Chat $chat) {
+    $stmt = $this->db->prepare("SELECT * FROM chat WHERE producto = ? AND vendedor = ? AND comprador = ?");
+    $stmt->execute(array($chat->getProduct()->getId(), $chat->getVendedor()->getAlias(), $chat->getComprador()->getAlias()));
+    $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(sizeof($array) == 1)
+        return $array[0]["chat"];
+    else
+        return "no_existe";
   }
 
   /**

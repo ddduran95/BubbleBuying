@@ -6,6 +6,7 @@ require_once(__DIR__."/../model/MensajeMapper.php");
 require_once(__DIR__."/../model/Chat.php");
 require_once(__DIR__."/../model/ChatMapper.php");
 require_once(__DIR__."/../model/User.php");
+require_once(__DIR__."/../model/UserMapper.php");
 
 require_once(__DIR__."/../core/ViewManager.php");
 require_once(__DIR__."/../controller/BaseController.php");
@@ -47,7 +48,7 @@ class ChatsController extends BaseController {
    */
   public function index() {
       $currentuser = $this->view->getVariable("currentuser");
-      if(isset($_POST["mensaje"])){
+      if(isset($_POST["mensaje"]) && $_POST["mensaje"] !='' ){
           $mensaje = new Mensaje(
               $currentuser,
               $this->chatMapper->findById($_POST["chat_id"]),
@@ -75,7 +76,23 @@ class ChatsController extends BaseController {
     // render the view (/view/chats/index.php)
     $this->view->render("chats", "index");
 
-
   }
 
+  public function add() {
+
+
+      $this->userMapper = new UserMapper();
+      $this->productMapper = new ProductMapper();
+
+      $chat = new Chat(NULL,
+        $this->productMapper->findById($_GET["product_id"]),
+        $this->userMapper->findByAlias($_GET["comprador_alias"]),
+        $this->userMapper->findByAlias($_GET["vendedor_alias"])
+      );
+      $id =$this->chatMapper->checkIfExist($chat);
+      if($id== "no_existe")
+        $id = $this->chatMapper->save($chat);
+      echo $id;
+      $this->view->redirect("chats","index","chat=".$id);
+  }
 }

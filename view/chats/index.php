@@ -17,13 +17,15 @@
   <div class ="chat">
     <div class ="lista">
     <?php foreach ($chats as $aux) {?>
-      <div class = "objeto_chat select">
-        <img src = "imgs/producto/<?= $aux->getProduct()->getPhoto() ?>" height="80" width="120" style="border-right: 1px solid grey">
-        <div  id = "datos_chat">
-          <strong> <?= $aux->getProduct()->getTitle() ?></strong>
-          <div> <?= $aux->getOther($currentuser)->getAlias() ?> </div>
+      <a href  ="index.php?controller=chats&amp;action=index&amp;chat=<?= $aux->getId() ?>">
+        <div class = "objeto_chat select">
+          <img src = "imgs/producto/<?= $aux->getProduct()->getPhoto() ?>" height="80" width="120" style="border-right: 1px solid grey">
+            <div  id = "datos_chat">
+              <strong> <?= $aux->getProduct()->getTitle() ?></strong>
+            <div> <?= $aux->getOther($currentuser)->getAlias() ?> </div>
+          </div>
         </div>
-      </div>
+      </a>
     <?php } ?>
   </div>
   <div class="ventana_chat">
@@ -54,7 +56,7 @@
         } ?>
 
     </div>
-    <form class="caja_texto_chat" id = "my_form" action = "index.php?controller=chats&amp;action=index" method = "post">
+    <form class="caja_texto_chat" id = "my_form" action = "index.php?controller=chats&amp;action=index&amp;chat=<?= $aux->getId() ?>" method = "post">
         <div class = "input_chat">
             <input type="hidden" name= "chat_id" value="<?= $chat->getId()?>">
             <input type="text" name = "mensaje"class = "texto_chat" placeholder="Escribir mensaje" >
