@@ -32,7 +32,7 @@ class MensajeMapper {
    * @return true or false of execute
    */
   public function save(Mensaje $mensaje) {
-    $stmt = $this->db->prepare("INSERT INTO chats(autor, chat, mensaje) values (?,?)");
+    $stmt = $this->db->prepare("INSERT INTO mensajes(autor, chat, mensaje) values (?,?,?)");
     return $stmt->execute(array($mensaje->getAutor()->getAlias(),$mensaje->getChat()->getId(),$mensaje->getMensaje()));
   }
 }

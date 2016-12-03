@@ -2,6 +2,7 @@
 //file: controller/ChatController.php
 
 require_once(__DIR__."/../model/Mensaje.php");
+require_once(__DIR__."/../model/MensajeMapper.php");
 require_once(__DIR__."/../model/Chat.php");
 require_once(__DIR__."/../model/ChatMapper.php");
 require_once(__DIR__."/../model/User.php");
@@ -30,6 +31,7 @@ class ChatsController extends BaseController {
     parent::__construct();
 
     $this->chatMapper = new ChatMapper();
+    $this->mensajeMapper = new MensajeMapper();
   }
 
   /**
@@ -44,9 +46,17 @@ class ChatsController extends BaseController {
    * </ul>
    */
   public function index() {
+      $currentuser = $this->view->getVariable("currentuser");
+      if(isset($_POST["mensaje"])){
+          $mensaje = new Mensaje(
+              $currentuser,
+              $this->chatMapper->findById($_POST["chat_id"]),
+              $_POST["mensaje"]);
+        $this->mensajeMapper->save($mensaje);
+      }
 
     // obtain the data from the database
-    $chats = $this->chatMapper->findAll();
+    $chats = $this->chatMapper->findAll($currentuser);
     //var_dump($chats);
 
     // puts the chat id to show by Default

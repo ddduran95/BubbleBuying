@@ -54,12 +54,13 @@
         } ?>
 
     </div>
-    <form class="caja_texto_chat" action = "method">
+    <form class="caja_texto_chat" id = "my_form" action = "index.php?controller=chats&amp;action=index" method = "post">
         <div class = "input_chat">
-            <input type="text" class = "texto_chat" placeholder="Escribir mensaje" >
+            <input type="hidden" name= "chat_id" value="<?= $chat->getId()?>">
+            <input type="text" name = "mensaje"class = "texto_chat" placeholder="Escribir mensaje" >
         </div>
         <div>
-            <a class= "btn_enviar_texto" href="#"><i class="fa fa-paper-plane" aria-hidden="false"></i></a>
+            <a class= "btn_enviar_texto" onclick="document.getElementById('my_form').submit();"><i class="fa fa-paper-plane" aria-hidden="false"></i></a>
       </div>
   </form>
   </div>
