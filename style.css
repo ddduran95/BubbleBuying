@@ -224,6 +224,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  overflow: auto;
 }
 .comentario{
   margin:10px;
@@ -236,12 +237,20 @@ a {
   background-color:#34C9F2;
   border: solid 2px white;
   align-self: flex-end;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 .cuerpo_chat .left{
    text-align: left;
    background-color: white;
    border: solid 2px #34C9F2;
    align-self: flex-start;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   margin-top: 1px;
+   margin-bottom: 1px;
 }
 .caja_texto_chat{
   height: 44px;
