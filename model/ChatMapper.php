@@ -35,8 +35,8 @@ class ChatMapper {
    * @throws PDOException if a database error occurs
    * @return mixed Array of Chat instances (without mensajes)
    */
-  public function findAll() {
-    $stmt = $this->db->query("SELECT * FROM chat, usuario WHERE usuario.alias = chat.vendedor");
+  public function findAll(User $currentuser) {
+    $stmt = $this->db->query("SELECT * FROM chat, usuario WHERE (usuario.alias = chat.vendedor OR usuario.alias = chat.comprador) AND usuario.alias = '{$currentuser->getAlias()}'");
     $chat_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $chats = array();
@@ -73,6 +73,7 @@ class ChatMapper {
         $vendedor = $UserMapper->findByAlias($chat["vendedor"]);
         $comprador = $UserMapper->findByAlias($chat["comprador"]);
         $chat = new Chat($chat["chat"], $producto, $comprador, $vendedor);
+        return $chat;
     } else {
       return NULL;
     }
