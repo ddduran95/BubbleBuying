@@ -7,6 +7,7 @@
  $product = $view->getVariable("product");
  $currentuser = $view->getVariable("currentusername");
  $view->setVariable("title", "Product");
+
 ?>
 
 <html lang="en">
@@ -33,17 +34,22 @@
                     <strong> <?=$product->getSeller()->getAlias() ?></strong>
               </div>
             </a>
-            <form name = "searching" class = "bloque_header" action="index.php?controller=products&amp;action=index" method="POST">
 
-              <input name="product" type="hidden" value="<?=$product->getId() ?>">
-              <input name="vendedor" type="hidden" value="<?=$product->getSeller()->getAlias() ?>">
-              <input name="comprador" type="hidden" value="<?=$currentusername ?>">
-              <a onclick="searching.submit()">
+            <?php
+            if($product->getSeller()->getAlias()!=$currentuser):
+            ?>
+              <a href="index.php?controller=chats&amp;action=add&amp;product_id=<?=$product->getId()?>&amp;comprador_alias=<?=$currentuser?>&amp;vendedor_alias=<?=$product->getSeller()->getAlias()?>">
                 <div class="btn-chat">
                   <p><i class="fa fa-comments" aria-hidden="true"></i>Chat</p>
                 </div>
               </a>
-            </form>
+          <?php else:?>
+            <a href="index.php?controller=products&amp;action=delete&amp;product_id=<?=$product->getId()?>">
+              <div class="btn-chat">
+                <p><i class="fa fa-times-circle-o" aria-hidden="true"></i><?= i18n("Sold") ?></p>
+              </div>
+            </a>
+          <?php endif;?>
           </div>
         </div>
 

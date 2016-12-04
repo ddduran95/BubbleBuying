@@ -161,7 +161,7 @@ class ProductMapper {
    * @return void
    */
   public function delete(Product $product) {
-    $stmt = $this->db->prepare("DELETE from product WHERE id_producto=?");
+    $stmt = $this->db->prepare("DELETE from producto WHERE id_producto=?");
     $stmt->execute(array($product->getId()));
   }
 

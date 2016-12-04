@@ -90,6 +90,7 @@ class ProductsController extends BaseController {
 
     if (!isset($this->currentUser)) {
       throw new Exception("Not in session. See your products requires login");
+        $this->view->render("users", "login");
     }
     // find the Product object in the database
 
@@ -366,7 +367,7 @@ class ProductsController extends BaseController {
    * @return void
    */
   public function delete() {
-    if (!isset($_POST["id"])) {
+    if (!isset($_GET["product_id"])) {
       throw new Exception("id is mandatory");
     }
     if (!isset($this->currentUser)) {
@@ -374,7 +375,7 @@ class ProductsController extends BaseController {
     }
 
      // Get the Post object from the database
-    $productid = $_REQUEST["id"];
+    $productid = $_REQUEST["product_id"];
     $product = $this->productMapper->findById($productid);
 
     // Does the post exist?
@@ -383,7 +384,7 @@ class ProductsController extends BaseController {
     }
 
     // Check if the Post author is the currentUser (in Session)
-    if ($product->getVendedor() != $this->currentUser) {
+    if ($product->getSeller()->getAlias() != $this->currentUser->getAlias()) {
       throw new Exception("Product seller is not the logged user");
     }
 
@@ -395,7 +396,7 @@ class ProductsController extends BaseController {
     // We want to see a message after redirection, so we establish
     // a "flash" message (which is simply a Session variable) to be
     // get in the view after redirection.
-    $this->view->setFlash(sprintf(i18n("Product \"%s\" successfully deleted."),$product ->getTitulo()));
+    $this->view->setFlash(sprintf(i18n("Product \"%s\" successfully deleted."),$product ->getTitle()));
 
     // perform the redirection. More or less:
     // header("Location: index.php?controller=posts&action=index")

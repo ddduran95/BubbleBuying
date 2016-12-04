@@ -31,7 +31,7 @@
           <!-- Boton si esta logeuado -->
       	<?php
         if (isset($_SESSION["currentuser"])):
-      	// = sprintf(i18n("Hello %s"), $currentuser)
+      	 echo i18n("Hello "). $currentuser;
         ?>
       	  <a class = "entrar" href="index.php?controller=users&amp;action=logout"> <?= i18n("Logout") ?> </a>
           <!-- Boton si NO esta logeuado -->
