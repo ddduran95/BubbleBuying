@@ -65,7 +65,7 @@
         } ?>
 
     </div>
-    <form class="caja_texto_chat" id = "my_form" action = "index.php?controller=chats&amp;action=index&amp;chat=<?= $aux->getId() ?>" method = "post">
+    <form class="caja_texto_chat" id = "my_form" action = "index.php?controller=chats&amp;action=addMessage&amp;chat=<?= $aux->getId() ?>" method = "post">
         <div class = "input_chat">
             <input type="hidden" name= "chat_id" value="<?= $chat->getId()?>">
             <input type="text" name = "mensaje"class = "texto_chat" placeholder="Escribir mensaje" >

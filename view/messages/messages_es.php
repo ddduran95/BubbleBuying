@@ -71,6 +71,7 @@
     "Upload a new profile photo"=> "Sube una nueva foto de perfil",
     "Save Photo"=> "Guardar Foto",
     "Sold"=> "Vendido",
+    "No Access" => "Acceso denegado",
     "You don't have open chats."=>"No tienes chats abiertos."
 
   )

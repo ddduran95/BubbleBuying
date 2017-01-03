@@ -47,32 +47,28 @@ class ChatsController extends BaseController {
    * </ul>
    */
   public function index() {
-      $currentuser = $this->view->getVariable("currentuser");
-      if(isset($_POST["mensaje"]) && $_POST["mensaje"] !='' ){
-          $mensaje = new Mensaje(
-              $currentuser,
-              $this->chatMapper->findById($_POST["chat_id"]),
-              $_POST["mensaje"]);
-        $this->mensajeMapper->save($mensaje);
-      }
+        $currentuser = $this->view->getVariable("currentuser");
+        // obtain the data from the database
+        $chats = $this->chatMapper->findAll($currentuser);
 
-    // obtain the data from the database
-    $chats = $this->chatMapper->findAll($currentuser);
+        if($chats!=NULL){
+          // puts the chat id to show by Default
+          if(!isset($_GET["chat"])){
+              $_GET["chat"] = reset($chats)->getId();
+          }
 
-    if($chats!=NULL){
-      // puts the chat id to show by Default
-      if(!isset($_GET["chat"])){
-          $_GET["chat"] = reset($chats)->getId();
-      }
-
-      $chat = $this->chatMapper->findByIdWithMensajes($_GET["chat"]);
-      // puts the chat id to show
-      $this->view->setVariable("chat",$chat);
-      // put the array containing Chat object to the view
-      $this->view->setVariable("chats", $chats);
-    }
-    // render the view (/view/chats/index.php)
-    $this->view->render("chats", "index");
+          $chat = $this->chatMapper->findByIdWithMensajes($_GET["chat"]);
+          if($chat->getVendedor()->getAlias() != $currentuser->getAlias() && $chat->getComprador()->getAlias() != $currentuser->getAlias()){
+              $this->view->setFlash(sprintf(i18n("No Access")));
+              $this->view->redirect("chats","index");
+          }
+          // puts the chat id to show
+          $this->view->setVariable("chat",$chat);
+          // put the array containing Chat object to the view
+          $this->view->setVariable("chats", $chats);
+        }
+        // render the view (/view/chats/index.php)
+        $this->view->render("chats", "index");
 
   }
 
@@ -92,5 +88,17 @@ class ChatsController extends BaseController {
         $id = $this->chatMapper->save($chat);
       echo $id;
       $this->view->redirect("chats","index","chat=".$id);
+  }
+
+  public function addMessage(){
+      $currentuser = $this->view->getVariable("currentuser");
+      if(isset($_POST["mensaje"]) && $_POST["mensaje"] !='' ){
+          $mensaje = new Mensaje(
+              $currentuser,
+              $this->chatMapper->findById($_POST["chat_id"]),
+              $_POST["mensaje"]);
+          $this->mensajeMapper->save($mensaje);
+      }
+      $this->view->redirect("chats","index","chat=".$_POST["chat_id"]);
   }
 }
