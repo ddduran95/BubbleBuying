@@ -11,8 +11,7 @@
   <head>
     <title><?= $view->getVariable("title", "no title") ?></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="./iconos/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans|Maven+Pro">
     <script src="index.js"></script>
@@ -68,7 +67,7 @@
 					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Electrodomesticos"><i class="fa fa-plug "></i> <?= i18n("Home Appliances") ?> </a></li>
 					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Ropa"><i class="fa fa-suitcase "></i> <?= i18n("Clothing") ?> </a></li>
 					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Motor"><i class="fa fa-car "></i> <?= i18n("Motor") ?> </a></li>
-					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Deporte"><i class="fa fa-futbol-o "></i> <?= i18n("Sport") ?> </a></li>
+					<li><a class= "btn_menu prioridad_2" href="index.php?controller=products&amp;action=index&amp;category=Deportes"><i class="fa fa-futbol-o "></i> <?= i18n("Sport") ?> </a></li>
 				</ul>
 			</li>
 		</ul>

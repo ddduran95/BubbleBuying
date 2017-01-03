@@ -10,7 +10,7 @@
     "Author" => "Autor",
     "Actions" => "Acciones",
     "Create post" => "Crear artículo",
-    "Hello" => "Hola",
+    "Hello " => "Hola ",
     "Modify post" => "Modificar artículo",
     "Post \"%s\" successfully added." => "Artículo \"%s\" añadido.",
     "Post \"%s\" successfully updated." => "Artículo \"%s\" modificado.",
@@ -70,7 +70,8 @@
     "Short Description"=> "Descripción Breve",
     "Upload a new profile photo"=> "Sube una nueva foto de perfil",
     "Save Photo"=> "Guardar Foto",
-    "Sold"=> "Vendido"
+    "Sold"=> "Vendido",
+    "You don't have open chats."=>"No tienes chats abiertos."
 
   )
 ?>

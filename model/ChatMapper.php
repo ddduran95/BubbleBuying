@@ -42,14 +42,18 @@ class ChatMapper {
     $chats = array();
     $UserMapper = new UserMapper();
     $ProductMapper = new ProductMapper();
-
-    foreach ($chat_db as $chat) {
-      $producto = $ProductMapper->findById($chat["producto"]);
-      $vendedor = $UserMapper->findByAlias($chat["vendedor"]);
-      $comprador = $UserMapper->findByAlias($chat["comprador"]);
-      $chats[$chat["chat"]] = new Chat($chat["chat"], $producto, $comprador, $vendedor);
+    if($chat_db != null) {
+      foreach ($chat_db as $chat) {
+        $producto = $ProductMapper->findById($chat["producto"]);
+        $vendedor = $UserMapper->findByAlias($chat["vendedor"]);
+        $comprador = $UserMapper->findByAlias($chat["comprador"]);
+        $chats[$chat["chat"]] = new Chat($chat["chat"], $producto, $comprador, $vendedor);
+      }
+      return $chats;
+    }else {
+      return NULL;
     }
-    return $chats;
+
   }
 
   /**

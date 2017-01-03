@@ -1,8 +1,7 @@
 <?php
 //file: controller/PostController.php
 
-require_once(__DIR__."/../model/Comment.php");
-require_once(__DIR__."/../model/Post.php");
+
 require_once(__DIR__."/../model/ProductMapper.php");
 require_once(__DIR__."/../model/User.php");
 
@@ -88,7 +87,7 @@ class ProductsController extends BaseController {
    */
  public function viewMyProducts(){
 
-    if (!isset($this->currentUser)) {
+    if (!isset($this->currentUser) && !isset($_GET["alias"])) {
       throw new Exception("Not in session. See your products requires login");
         $this->view->render("users", "login");
     }
