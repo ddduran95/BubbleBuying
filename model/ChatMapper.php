@@ -124,7 +124,7 @@ class ChatMapper {
             foreach ($chat_wt_mensajes as $mensaje){
                 $chat_id = $mensaje["mensaje.chat"];
                 $contenido =  $mensaje["mensaje.mensaje"];
-                $autor = $UserMapper->findByAlias($mensaje["mensaje.autor"]);
+                $autor = $mensaje["mensaje.autor"];
                 $tiempo = $mensaje["mensaje.tiempo"];
 
                 $mensaje = new Mensaje($autor,$this->findById($chat_id),$contenido,$tiempo);

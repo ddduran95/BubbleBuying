@@ -77,11 +77,12 @@ class ChatsController extends BaseController {
 
       $this->userMapper = new UserMapper();
       $this->productMapper = new ProductMapper();
+      $currentuser = $this->view->getVariable("currentuser");
 
       $chat = new Chat(NULL,
-        $this->productMapper->findById($_GET["product_id"]),
-        $this->userMapper->findByAlias($_GET["comprador_alias"]),
-        $this->userMapper->findByAlias($_GET["vendedor_alias"])
+        $this->productMapper->findById($_POST["product_id"]),
+          $currentuser,
+        $this->userMapper->findByAlias($_POST["vendedor_alias"])
       );
       $id =$this->chatMapper->checkIfExist($chat);
       if($id== "no_existe")
@@ -92,10 +93,20 @@ class ChatsController extends BaseController {
 
   public function addMessage(){
       $currentuser = $this->view->getVariable("currentuser");
+      $chat = $this->chatMapper->findById($_POST["chat_id"]);
+      if($chat->getVendedor()->getAlias() != $currentuser->getAlias() && $chat->getComprador()->getAlias() != $currentuser->getAlias()){
+          $this->view->setFlash(sprintf(i18n("No Access")));
+          $this->view->redirect("chats","index");
+      }
+      if($currentuser->getAlias() == $chat->getComprador()->getAlias())
+          $autor = true;
+      else
+          $autor = false;
+
       if(isset($_POST["mensaje"]) && $_POST["mensaje"] !='' ){
           $mensaje = new Mensaje(
-              $currentuser,
-              $this->chatMapper->findById($_POST["chat_id"]),
+              $autor,
+              $chat,
               $_POST["mensaje"]);
           $this->mensajeMapper->save($mensaje);
       }

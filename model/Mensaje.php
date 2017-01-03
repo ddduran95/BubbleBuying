@@ -14,14 +14,14 @@ require_once(__DIR__."/../core/ValidationException.php");
 class Mensaje {
 
   /**
-   * The autor of the mensaje
-   * @var User
+   * The autor of the mensaje (true -> Buyer , false => Seller)
+   * @var Boolean
    */
   private $autor;
 
   /**
    * The chat of the mensaje
-   * @var timestamp
+   * @var time
    */
   private $hora;
 
@@ -45,7 +45,7 @@ class Mensaje {
    * @param User $author The author of the mensaje
    * @param Chat $chat The parent chat
    */
-  public function __construct(User $autor=NULL, Chat $chat=NULL, $mensaje=NULL,$tiempo=NULL) {
+  public function __construct($autor=NULL, Chat $chat=NULL, $mensaje=NULL,$tiempo=NULL) {
     $this->autor= $autor;
     $this->chat= $chat;
     $this->tiempo= $tiempo;
@@ -67,7 +67,7 @@ class Mensaje {
    * @param string $mensaje the mensaje of this mensaje
    * @return void
    */
-  public function setAutor(User $autor) {
+  public function setAutor($autor) {
     $this->autor = $autor;
   }
 
