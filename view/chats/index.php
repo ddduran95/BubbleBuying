@@ -16,33 +16,42 @@
 <article id="maincontent">
   <div class ="chat">
     <div class ="lista">
-    <?php foreach ($chats as $aux) {?>
-      <a href  ="index.php?controller=chats&amp;action=index&amp;chat=<?= $aux->getId() ?>">
-        <div class = "objeto_chat select">
-          <img src = "imgs/producto/<?= $aux->getProduct()->getPhoto() ?>" height="80" width="120" style="border-right: 1px solid grey">
-            <div  id = "datos_chat">
-              <strong> <?= $aux->getProduct()->getTitle() ?></strong>
-            <div> <?= $aux->getOther($currentuser)->getAlias() ?> </div>
-          </div>
+    <?php
+      if($chats==NULL):?>
+        <div class="aviso">
+          <h1> <?= i18n("You don't have open chats.") ?></h1>
         </div>
-      </a>
-    <?php } ?>
+      <?php
+      else:
+        foreach ($chats as $aux):?>
+        <a href  ="index.php?controller=chats&amp;action=index&amp;chat=<?= $aux->getId() ?>">
+          <div class = "objeto_chat select">
+            <img class="photo-product-chat" src = "imgs/producto/<?= $aux->getProduct()->getPhoto() ?>" >
+              <div  id = "datos_chat">
+                <strong> <?= $aux->getProduct()->getTitle() ?></strong>
+              <div> <?= $aux->getOther($currentuser)->getAlias() ?> </div>
+            </div>
+          </div>
+        </a>
+      <?php
+      endforeach;
+
+      ?>
   </div>
   <div class="ventana_chat">
 
     <div class="cabecera_chat">
       <div class = "producto_chat">
-        <img src = "imgs/producto/<?= $chat->getProduct()->getPhoto()?>" height="80" width="120" style="border-right: 1px solid grey">
+        <img class="photo-product-chat" src = "imgs/producto/<?= $chat->getProduct()->getPhoto()?>">
         <div  id = "datos_producto">
           <strong> <?=$chat->getProduct()->getTitle() ?></strong>
           <div id = "precio_producto"> <?= $chat->getProduct()->getPrize()?>€ </div>
         </div>
       </div>
       <div class = "vendedor_chat">
-        <img src = "imgs/perfil/<?= $chat->getOther($currentuser)->getPhoto() ?>" height="40" width="40" style="border-radius: 100%; border: 1px solid black">
+        <img class="photo-seller-chat" src = "imgs/perfil/<?= $chat->getOther($currentuser)->getPhoto() ?>" >
         <div class="vendedor_chat_texto">
           <div> <strong> <?= $chat->getOther($currentuser)->getAlias() ?> </strong></div>
-          <div> 32 productos </div>
        </div>
      </div>
     </div>
@@ -66,5 +75,6 @@
       </div>
   </form>
   </div>
+<?php endif;?>
 </div>
 </article>

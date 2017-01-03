@@ -58,21 +58,19 @@ class ChatsController extends BaseController {
 
     // obtain the data from the database
     $chats = $this->chatMapper->findAll($currentuser);
-    //var_dump($chats);
 
-    // puts the chat id to show by Default
-    if(!isset($_GET["chat"])){
-        $_GET["chat"] = reset($chats)->getId();
+    if($chats!=NULL){
+      // puts the chat id to show by Default
+      if(!isset($_GET["chat"])){
+          $_GET["chat"] = reset($chats)->getId();
+      }
+
+      $chat = $this->chatMapper->findByIdWithMensajes($_GET["chat"]);
+      // puts the chat id to show
+      $this->view->setVariable("chat",$chat);
+      // put the array containing Chat object to the view
+      $this->view->setVariable("chats", $chats);
     }
-
-    $chat = $this->chatMapper->findByIdWithMensajes($_GET["chat"]);
-
-    // put the array containing Chat object to the view
-    $this->view->setVariable("chats", $chats);
-
-    // puts the chat id to show
-    $this->view->setVariable("chat",$chat);
-
     // render the view (/view/chats/index.php)
     $this->view->render("chats", "index");
 

@@ -40,7 +40,7 @@
                       </div>
                       <div class = "texto_vendedor">
                         <strong> <?=$product->getSeller()->getAlias() ?></strong>
-                        <div> 32 productos </div>
+                        
                       </div>
                   </div>
                 </a>

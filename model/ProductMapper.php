@@ -3,8 +3,7 @@
 require_once(__DIR__."/../core/PDOConnection.php");
 
 require_once(__DIR__."/../model/User.php");
-require_once(__DIR__."/../model/Post.php");
-require_once(__DIR__."/../model/Comment.php");
+
 require_once(__DIR__."/../model/Product.php");
 
 
@@ -136,7 +135,7 @@ class ProductMapper {
   public function save(Product $product) {
     $stmt = $this->db->prepare("INSERT INTO producto (titulo, descripcion, precio, foto, id_producto, vendedor, categoria) values (?,?,?,?,?,?,?)");
     $stmt->execute(array($product->getTitle(), $product->getDescription(), $product->getPrize(), $product->getPhoto(),
-    $product->getId(), $product->getSeller()->getName(), $product->getCategory()));
+    $product->getId(), $product->getSeller()->getAlias(), $product->getCategory()));
     return $this->db->lastInsertId();
   }
 
@@ -161,8 +160,13 @@ class ProductMapper {
    * @return void
    */
   public function delete(Product $product) {
+
     $stmt = $this->db->prepare("DELETE from producto WHERE id_producto=?");
     $stmt->execute(array($product->getId()));
+
+    $stmt = $this->db->prepare("DELETE from chat WHERE producto=?");
+    $stmt->execute(array($product->getId()));
+
   }
 
 }
