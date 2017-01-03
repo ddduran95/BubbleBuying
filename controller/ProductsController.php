@@ -286,7 +286,7 @@ class ProductsController extends BaseController {
 
         $product_mapper = new ProductMapper();
         $product = $product_mapper->findById($_REQUEST["product_id"]);
-
+        $tiene_img = false;
         if (isset($_POST["submit"])) { // reaching via HTTP Post...
 
             // populate the Post object with data form the form
@@ -312,14 +312,9 @@ class ProductsController extends BaseController {
                     && $imageFileType != "GIF" ) {
                     throw new Exception("Format of this image is not allowed");
                 }
-
-            }else{
-                $nombreImagen = null;
+                $product->setPhoto($nombreImagen);
+                $tiene_img = true;
             }
-
-
-
-            $product->setPhoto($nombreImagen);
 
             // The user of the Post is the currentUser (user in session)
             $product->setSeller($this->currentUser);
@@ -327,11 +322,11 @@ class ProductsController extends BaseController {
             try {
                 // validate Post object
                 $product->checkIsValidForCreate(); // if it fails, ValidationException
-
-                move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
+                if($tiene_img)
+                    move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
 
                 // save the Product object into the database
-                $this->productMapper->save($product);
+                $this->productMapper->update($product);
 
                 // POST-REDIRECT-GET
                 // Everything OK, we will redirect the user to the list of products

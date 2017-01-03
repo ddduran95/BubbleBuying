@@ -42,8 +42,8 @@ $view->setVariable("title", "New Product");
                 </select>
                 <?= i18n("Photo") ?>: <?= isset($errors["photo"])?$errors["photo"]:"" ?>
                 <input type="file" name="photo" class="input-form">
+                <input type="hidden" name="product_id" value="<?=$product->getId()?>">
                 <input type="submit" name="submit" value="<?= i18n("Save Changes") ?>" class="btn-registro">
-                <input type="hidden" name="product_id" value="<?=$product->getId()?>"
             </form>
         </div>
     </div>
