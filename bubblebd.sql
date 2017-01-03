@@ -58,7 +58,7 @@ DROP TABLE IF EXISTS `mensajes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mensajes` (
   `chat` int(11) NOT NULL,
-  `autor` varchar(45) COLLATE latin1_spanish_ci NOT NULL,
+  `autor` int(1) COLLATE latin1_spanish_ci NOT NULL,
   `tiempo` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `mensaje` varchar(150) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`chat`,`tiempo`,`mensaje`)
@@ -71,7 +71,11 @@ CREATE TABLE `mensajes` (
 
 LOCK TABLES `mensajes` WRITE;
 /*!40000 ALTER TABLE `mensajes` DISABLE KEYS */;
-INSERT INTO `mensajes` VALUES (1,'barajas','2016-12-01 20:41:15','Mensaje 1 '),(1,'ddduran','2016-12-01 20:42:04','Mensaje 3'),(2,'barajas','2016-12-01 20:42:18','Mensaje 2'),(2,'laserraptor','2016-12-01 20:42:18','Mensaje 4');
+INSERT INTO `mensajes` VALUES
+(1,'1','2016-12-01 20:41:15','Mensaje 1 '),
+(1,'0','2016-12-01 20:42:04','Mensaje 3'),
+(2,'1','2016-12-01 20:42:18','Mensaje 2'),
+(2,'0','2016-12-01 20:42:18','Mensaje 4');
 /*!40000 ALTER TABLE `mensajes` ENABLE KEYS */;
 UNLOCK TABLES;
 

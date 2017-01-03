@@ -279,71 +279,82 @@ class ProductsController extends BaseController {
    * @throws Exception if the current logged user is not the author of the post
    * @return void
    */
-  public function edit() {
-    if (!isset($_REQUEST["id"])) {
-      throw new Exception("A product id is mandatory");
+    public function edit() {
+        if (!isset($this->currentUser)) {
+            throw new Exception("Not in session. Adding products requires login");
+        }
+
+        $product_mapper = new ProductMapper();
+        $product = $product_mapper->findById($_REQUEST["product_id"]);
+        $tiene_img = false;
+        if (isset($_POST["submit"])) { // reaching via HTTP Post...
+
+            // populate the Post object with data form the form
+            $product->setTitle($_POST["title"]);
+            $product->setDescription($_POST["description"]);
+            $product->setPrize($_POST["prize"]);
+            $product->setCategory($_POST["category"]);
+
+            //Upload image to server if everything's ok
+            if ($_FILES['photo']['name'] != NULL){
+                $target_dir = 'imgs/producto/';
+                $target_file = $target_dir . basename($_FILES['photo']['name']);
+                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                $temp = explode (".", $_FILES['photo']['name']);
+                $nombreImagen = round (microtime(true)) . '.' . end($temp);
+                // Comprueba la longitud del archivo
+                if ($_FILES["photo"]["size"] > 1000000 ) {
+                    throw new Exception("Image is too big to be uploaded");
+                }
+                // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG"
+                    && $imageFileType != "GIF" ) {
+                    throw new Exception("Format of this image is not allowed");
+                }
+                $product->setPhoto($nombreImagen);
+                $tiene_img = true;
+            }
+
+            // The user of the Post is the currentUser (user in session)
+            $product->setSeller($this->currentUser);
+
+            try {
+                // validate Post object
+                $product->checkIsValidForCreate(); // if it fails, ValidationException
+                if($tiene_img)
+                    move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
+
+                // save the Product object into the database
+                $this->productMapper->update($product);
+
+                // POST-REDIRECT-GET
+                // Everything OK, we will redirect the user to the list of products
+                // We want to see a message after redirection, so we establish
+                // a "flash" message (which is simply a Session variable) to be
+                // get in the view after redirection.
+                $this->view->setFlash(sprintf(i18n("Product \"%s\" successfully updated."),$product ->getTitle()));
+
+                // perform the redirection. More or less:
+                // header("Location: index.php?controller=products&action=index")
+                // die();
+                $this->view->redirect("products", "viewmyproducts");
+
+            }catch(ValidationException $ex) {
+                // Get the errors array inside the exepction...
+                $errors = $ex->getErrors();
+                // And put it to the view as "errors" variable
+                $this->view->setVariable("errors", $errors);
+            }
+        }
+
+        // Put the Product object visible to the view
+        $this->view->setVariable("product", $product);
+
+        // render the view (/view/product/edit.php)
+        $this->view->render("products", "edit");
+
     }
-
-    if (!isset($this->currentUser)) {
-      throw new Exception("Not in session. Editing products requires login");
-    }
-
-
-    // Get the Product object from the database
-    $productid = $_REQUEST["id"];
-    $product = $this->productMapper->findById($productid);
-
-    // Does the post exist?
-    if ($product == NULL) {
-      throw new Exception("no such product with id: ".$productid);
-    }
-
-    // Check if the Post author is the currentUser (in Session)
-    if ($product->getVendedor() != $this->currentUser) {
-      throw new Exception("logged user is not the seller of the product id ".$productid);
-    }
-
-    if (isset($_POST["submit"])) { // reaching via HTTP Post...
-
-      // populate the Post object with data form the form
-      $product->setTitulo($_POST["title"]);
-      $product->setDescripcion($_POST["description"]);
-      $product->setPrecio($_POST["prize"]);
-      $product->setFoto($_POST["photo"]);
-
-      try {
-      	// validate Post object
-      	$product->checkIsValidForUpdate(); // if it fails, ValidationException
-
-      	// update the Post object in the database
-      	$this->productMapper->update($product);
-
-      	// POST-REDIRECT-GET
-      	// Everything OK, we will redirect the user to the list of posts
-      	// We want to see a message after redirection, so we establish
-      	// a "flash" message (which is simply a Session variable) to be
-      	// get in the view after redirection.
-      	$this->view->setFlash(sprintf(i18n("Product \"%s\" successfully updated."),$product ->getTitulo()));
-
-      	// perform the redirection. More or less:
-      	// header("Location: index.php?controller=posts&action=index")
-      	// die();
-      	$this->view->redirect("products", "index");
-
-      }catch(ValidationException $ex) {
-      	// Get the errors array inside the exepction...
-      	$errors = $ex->getErrors();
-      	// And put it to the view as "errors" variable
-      	$this->view->setVariable("errors", $errors);
-      }
-    }
-
-    // Put the Product object visible to the view
-    $this->view->setVariable("product", $product);
-
-    // render the view (/view/products/edit.php)
-    $this->view->render("products", "edit");
-  }
 
   /**
    * Action to delete a post

@@ -147,9 +147,8 @@ class ProductMapper {
    * @return void
    */
   public function update(Product $product) {
-    $stmt = $this->db->prepare("UPDATE producto set titulo=?, descripcion=?, precio=?, foto=? where id_producto=?");
-    $stmt->execute(array($product->getTitulo(), $product->getDescripcion(), $product->getPrecio(), $product->getFoto(),
-    $product->getId()));
+    $stmt = $this->db->prepare("UPDATE producto set titulo=?, descripcion=?, precio=?, foto=?, categoria = ? where id_producto=?");
+      $stmt->execute(array($product->getTitle(), $product->getDescription(), $product->getPrize(), $product->getPhoto(), $product->getCategory(),$product->getId()));
   }
 
   /**

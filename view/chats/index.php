@@ -57,7 +57,11 @@
     </div>
     <div class="cuerpo_chat">
         <?php foreach ($chat->getMensajes() as $mensaje) {
-            if($mensaje->getAutor()->getAlias() == $currentuser){
+            if($mensaje->getAutor())
+                $autor = $chat->getComprador();
+            else
+                $autor = $chat->getVendedor();
+            if($autor->getAlias() == $currentuser){
                 ?> <div class="comentario right"> <?= $mensaje->getMensaje() ?></div> <?php
             }else{
                 ?> <div class="comentario left"> <?= $mensaje->getMensaje() ?></div> <?php
@@ -65,10 +69,10 @@
         } ?>
 
     </div>
-    <form class="caja_texto_chat" id = "my_form" action = "index.php?controller=chats&amp;action=index&amp;chat=<?= $aux->getId() ?>" method = "post">
+    <form class="caja_texto_chat" id = "my_form" action = "index.php?controller=chats&amp;action=addMessage&amp;chat=<?= $aux->getId() ?>" method = "post">
         <div class = "input_chat">
             <input type="hidden" name= "chat_id" value="<?= $chat->getId()?>">
-            <input type="text" name = "mensaje"class = "texto_chat" placeholder="Escribir mensaje" >
+            <input autofocus type="text" name = "mensaje"class = "texto_chat" placeholder="Escribir mensaje" >
         </div>
         <div>
             <a class= "btn_enviar_texto" onclick="document.getElementById('my_form').submit();"><i class="fa fa-paper-plane" aria-hidden="false"></i></a>
