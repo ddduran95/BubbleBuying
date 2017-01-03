@@ -31,14 +31,14 @@ $view->setVariable("title", "New Product");
                 <?= i18n("Category") ?>:
                 <select name="category" class="add-select input-form">
                     <option value="Tecnologia" <?php echo(($product->getCategory() == "Tecnologia")? "selected" :"");?>><?=i18n("Tecnology")?></option>
-                    <option value="Libros"<?php echo (($product->getCategory() == "Libros") ? "selected":"") ?>><?=i18n("Books")?></option>
-                    <option value="Cosas de casa"<?php echo (($product->getCategory() == "Cosas de casa") ? "selected":"") ?>><?=i18n("Home")?></option>
-                    <option value="Videojuegos"<?php echo (($product->getCategory() == "Videojuegos") ? "selected":"") ?>><?=i18n("Videogames")?></option>
-                    <option value="Niños"<?php echo (($product->getCategory() == "Niños") ? "selected":"") ?>><?=i18n("Children")?></option>
-                    <option value="Electrodomesticos"<?php echo (($product->getCategory() == "Electrodomesticos") ? "selected":"") ?>><?=i18n("Home Appliances")?></option>
-                    <option value="Ropa"<?php echo (($product->getCategory() == "Ropa") ? "selected":"") ?>><?=i18n("Clothing")?></option>
-                    <option value="Motor"<?php echo (($product->getCategory() == "Motor") ? "selected":"") ?>><?=i18n("Motor")?></option>
-                    <option value="Deporte"<?php echo (($product->getCategory() == "Deporte") ? "selected":"") ?>><?=i18n("Sport")?></option>
+                    <option value="Libros"<?php echo (($product->getCategory() == "Libros") ? "selected":"");; ?>><?=i18n("Books")?></option>
+                    <option value="Cosas de casa"<?php echo (($product->getCategory() == "Cosas de casa") ? "selected":""); ?>><?=i18n("Home")?></option>
+                    <option value="Videojuegos"<?php echo (($product->getCategory() == "Videojuegos") ? "selected":""); ?>><?=i18n("Videogames")?></option>
+                    <option value="Niños"<?php echo (($product->getCategory() == "Niños") ? "selected":""); ?>><?=i18n("Children")?></option>
+                    <option value="Electrodomesticos"<?php echo (($product->getCategory() == "Electrodomesticos") ? "selected":""); ?>><?=i18n("Home Appliances")?></option>
+                    <option value="Ropa"<?php echo (($product->getCategory() == "Ropa") ? "selected":""); ?>><?=i18n("Clothing")?></option>
+                    <option value="Motor"<?php echo (($product->getCategory() == "Motor") ? "selected":""); ?>><?=i18n("Motor")?></option>
+                    <option value="Deporte"<?php echo (($product->getCategory() == "Deporte") ? "selected":""); ?>><?=i18n("Sport")?></option>
                 </select>
                 <?= i18n("Photo") ?>: <?= isset($errors["photo"])?$errors["photo"]:"" ?>
                 <input type="file" name="photo" class="input-form">

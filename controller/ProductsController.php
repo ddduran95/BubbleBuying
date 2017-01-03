@@ -333,7 +333,7 @@ class ProductsController extends BaseController {
                 // We want to see a message after redirection, so we establish
                 // a "flash" message (which is simply a Session variable) to be
                 // get in the view after redirection.
-                $this->view->setFlash(sprintf(i18n("Product \"%s\" successfully added."),$product ->getTitle()));
+                $this->view->setFlash(sprintf(i18n("Product \"%s\" successfully updated."),$product ->getTitle()));
 
                 // perform the redirection. More or less:
                 // header("Location: index.php?controller=products&action=index")
