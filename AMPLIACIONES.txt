@@ -1,0 +1,9 @@
+Ampliaciones: 
+
+-Borrar o modificar productos por parte de los autores.
+
+-Subir una foto de perfil y mostrarla cuando se visualice un producto o un mensaje de chat de ese usuario.
+
+-Modificar Contraseña
+
+-Categorización de productos, con parámetro de categoría en la búsqueda.
