@@ -116,7 +116,7 @@ class UsersController extends BaseController {
       $user->setAlias($_POST["alias"]);
       $user->setPassword($_POST["passwd"]);
 
-      if(!$_FILES['size']==0){
+      if($_FILES['photo']['name'] != NULL){
         $target_dir = 'imgs/perfil/';
         $target_file = $target_dir . basename($_FILES['photo']['name']);
         $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
@@ -127,15 +127,22 @@ class UsersController extends BaseController {
             throw new Exception("Image is too big to be uploaded");
         }
         // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG"
+            && $imageFileType != "GIF" ) {
 
-        move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
+            throw new Exception("Format of this image is not allowed");
+        }
 
-        $user->setPhoto($nombreImagen);
+      }else{
+          $nombreImagen = null;
       }
+      $user->setPhoto($nombreImagen);
+
       try{
 
         	$user->checkIsValidForRegister(); // if it fails, ValidationException
-
+            move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
         	// check if user exists in the database
         	if (!$this->userMapper->aliasExists($_POST["alias"])){
         	  // save the User object into the database
@@ -180,47 +187,56 @@ class UsersController extends BaseController {
     }
 
       // find the current User in the database
+
+
     $user = $this->userMapper->findByAlias($this->currentUser->getAlias());
 
-    if (isset($_POST["submit"])){ // reaching via HTTP Post...
-      // populate the User object with data form the form
+      if(isset($_POST["submit"])){
 
-      $target_dir = 'imgs/perfil/';
-      $target_file = $target_dir . basename($_FILES['photo']['name']);
-      $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-      $temp = explode (".", $_FILES['photo']['name']);
-      $nombreImagen = round (microtime(true)) . '.' . end($temp);
-      // Comprueba la longitud del archivo
-      if ($_FILES["photo"]["size"] > 1000000 ) {
-          throw new Exception("Image is too big to be uploaded");
-      }
-      // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+        if (isset($_POST["pass"])) { // reaching via HTTP Post...
+            $user->setPassword($_POST["pass"]);
+        }
+        if (isset($_FILES['photo']['name'])) { // reaching via HTTP Post...
+            // populate the User object with data form the form
 
-      move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
+            $target_dir = 'imgs/perfil/';
+            $target_file = $target_dir . basename($_FILES['photo']['name']);
+            $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+            $temp = explode(".", $_FILES['photo']['name']);
+            $nombreImagen = round(microtime(true)) . '.' . end($temp);
+            // Comprueba la longitud del archivo
+            if ($_FILES["photo"]["size"] > 1000000) {
+                throw new Exception("Image is too big to be uploaded");
+            }
+            // Permiso de tipos de imagenes: JPG, JPEG, PNG & GIF
+
+            move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $nombreImagen);
 
 
-      $user->setPhoto($nombreImagen);
-      try{
-        	  // save the User object into the database
-        	  $this->userMapper->update($user);
+            $user->setPhoto($nombreImagen);
+        }
+        try {
+            // save the User object into the database
+            $this->userMapper->update($user);
 
-        	  // POST-REDIRECT-GET
-        	  // Everything OK, we will redirect the user to the list of posts
-        	  // We want to see a message after redirection, so we establish
-        	  // a "flash" message (which is simply a Session variable) to be
-        	  // get in the view after redirection.
-        	  $this->view->setFlash("Profile´s Photo  successfully Modify!");
+            // POST-REDIRECT-GET
+            // Everything OK, we will redirect the user to the list of posts
+            // We want to see a message after redirection, so we establish
+            // a "flash" message (which is simply a Session variable) to be
+            // get in the view after redirection.
+            $this->view->setFlash("Profile successfully Modify!");
 
-        	  // perform the redirection. More or less:
-        	  // header("Location: index.php?controller=users&action=login")
-        	  // die();
-        	  $this->view->redirect("users", "view");
-      }catch(ValidationException $ex) {
-      	// Get the errors array inside the exepction...
-      	$errors = $ex->getErrors();
-      	// And put it to the view as "errors" variable
-      	$this->view->setVariable("errors", $errors);
-      }
+            // perform the redirection. More or less:
+            // header("Location: index.php?controller=users&action=login")
+            // die();
+            $this->view->redirect("users", "view");
+        } catch (ValidationException $ex) {
+            // Get the errors array inside the exepction...
+            $errors = $ex->getErrors();
+            // And put it to the view as "errors" variable
+            $this->view->setVariable("errors", $errors);
+        }
+
     }
 
 

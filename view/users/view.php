@@ -17,7 +17,7 @@
         <div class="view-form">
           <div class=" user-photo">
             <?php if ($user->getPhoto() == NULL){ ?>
-              <img class="img-profile" src = "imgs/perfil/predeterminado.jpg" height="200" width="200" >
+              <img class="img-profile" src = "imgs/perfil/predeterminado.jpg">
             <?php }else{ ?>
               <img class="img-profile" src = "imgs/perfil/<?=$user->getPhoto() ?>" >
             <?php } ?>
@@ -28,6 +28,13 @@
         	    <input type="submit" name="submit" value="<?= i18n("Save Photo") ?>" class="btn-registro">
             </form>
           </div>
+            <div class="user-photo">
+                <form  action="index.php?controller=users&amp;action=view" method="POST" class="formulario ">
+                    <?= i18n("Nueva contraseña") ?>: <input type="password" name="pass" class="input-form" required="true">
+                    <?= isset($errors["pass"])?$errors["pass"]:"" ?>
+                    <input type="submit" name="submit" value="<?= i18n("Cambiar") ?>" class="btn-registro">
+                </form>
+            </div>
           <div class="user-data">
             <div >
                 <label><?= $user->getName() ?></label>
