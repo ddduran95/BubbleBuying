@@ -31,7 +31,7 @@ $view->setVariable("title", "New Product");
                 <?= i18n("Category") ?>:
                 <select name="category" class="add-select input-form">
                     <option value="Tecnologia" <?php echo(($product->getCategory() == "Tecnologia")? "selected" :"");?>><?=i18n("Tecnology")?></option>
-                    <option value="Libros"<?php echo (($product->getCategory() == "Libros") ? "selected":"");; ?>><?=i18n("Books")?></option>
+                    <option value="Libros"<?php echo (($product->getCategory() == "Libros") ? "selected":""); ?>><?=i18n("Books")?></option>
                     <option value="Cosas de casa"<?php echo (($product->getCategory() == "Cosas de casa") ? "selected":""); ?>><?=i18n("Home")?></option>
                     <option value="Videojuegos"<?php echo (($product->getCategory() == "Videojuegos") ? "selected":""); ?>><?=i18n("Videogames")?></option>
                     <option value="Niños"<?php echo (($product->getCategory() == "Niños") ? "selected":""); ?>><?=i18n("Children")?></option>

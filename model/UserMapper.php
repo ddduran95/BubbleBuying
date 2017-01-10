@@ -62,8 +62,8 @@ class UserMapper {
    * @return void
    */
   public function update(User $user) {
-    $stmt = $this->db->prepare("UPDATE usuario set perfil=? where alias=?");
-    $stmt->execute(array($user->getPhoto(),$user->getAlias()));
+    $stmt = $this->db->prepare("UPDATE usuario set password =?, perfil=? where alias=?");
+    $stmt->execute(array($user->getPassword(),$user->getPhoto(),$user->getAlias()));
   }
 
   /**
